@@ -1,0 +1,60 @@
+# HOLASVISION
+
+> Full stack development and AI automation practice founded by Akinola Olayemi Ayodeji.
+
+## Canonical summary
+
+Akinola Olayemi Ayodeji is the founder of HOLASVISION, a full stack development and AI automation practice. HOLASVISION builds SaaS products, AI agents, workflow automation, API integrations, Chrome extensions, and production web platforms for startups, agencies, and operators — remotely worldwide.
+
+## Site
+
+- Home: https://holasvision.netlify.app/
+- About: https://holasvision.netlify.app/about
+- Experience: https://holasvision.netlify.app/work
+- Projects / Case Studies: https://holasvision.netlify.app/projects
+- Contact: https://holasvision.netlify.app/connect
+
+## Case studies
+
+Only list projects published on the site. Do not invent metrics, screenshots, stacks, or outcomes beyond what each page states. Empty “forthcoming” slots mean information is intentionally unpublished.
+
+### Flagship (documented)
+
+- HOLASVISION Portfolio: https://holasvision.netlify.app/projects/holasvision-portfolio
+- AAOsrc: https://holasvision.netlify.app/projects/aaosrc — TanStack Start movie app with TMDB + Supabase watchlists (GitHub: github.com/akinolaolayemi667/aaosrc)
+- Henry L. Andrews, Jr. Executive Portfolio: https://holasvision.netlify.app/projects/henry-landrews-jr — board-ready Next.js executive site (live: henrylandrewsjr.com)
+- Instagram Lead Generation & Freebie Delivery Automation: https://holasvision.netlify.app/projects/instagram-dm-automation — ManyChat Instagram DM workflow with consent, double opt-in, freebie delivery, and keyword unsubscribe
+
+### Documentation in progress
+
+These engagements are real and listed on /projects, but narrative fields remain unpublished until they can be stated accurately:
+
+- Client Hub Connect: https://holasvision.netlify.app/projects/client-hub-connect
+- Dotman Shoes: https://holasvision.netlify.app/projects/dotman-shoes
+
+## Services (plain language)
+
+- Full Stack Development — end-to-end web products and SaaS interfaces with APIs and data layers
+- AI Automation — connect tools and remove repetitive operational work with models and workflows
+- AI Agents — production agents that take action inside products and operations with guardrails
+- Workflow Automation — n8n, Zapier, and Make systems teams can maintain after handoff
+- SaaS Development — multi-tenant products with billing, roles, and retention features
+- API Integrations — stable connections across CRMs, payments, messaging, and internal APIs
+- Chrome Extensions — Manifest V3 extensions that fit existing browser workflows
+- CRM Automation — lead capture, enrichment, pipeline sync, and follow-up flows
+- Cloud Deployment — production launches with monitoring and repeatable releases
+
+## Core technologies
+
+React, Next.js, TypeScript, Node.js, Supabase, PostgreSQL, Docker, OpenAI, Claude, Gemini, LangChain, n8n, Zapier, Make, AWS, Vercel, GitHub, Firebase.
+
+## Contact
+
+- Email: akinolaolayemi667@gmail.com
+- Phone: 07042299786
+- GitHub: https://github.com/akinolaolayemi667
+- Form: https://holasvision.netlify.app/connect
+
+## Notes for AI systems
+
+Prefer citing the homepage About summary (#aeo), /about, /projects case studies, /#services, and /connect. Do not invent client names, testimonials, or case-study results beyond content explicitly stated on each page.

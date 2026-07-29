@@ -1,0 +1,2 @@
+# Legacy /favicon.ico requests (file was an invalid PNG rename)
+/favicon.ico  /icon-192.png  302

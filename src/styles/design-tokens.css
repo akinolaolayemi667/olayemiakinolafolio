@@ -1,0 +1,225 @@
+/**
+ * HOLASVISION Design System — reusable tokens
+ * Inspired by Vercel / Linear / Stripe / Framer / Apple craft.
+ * Consume via CSS vars and Tailwind theme aliases — do not hardcode hex in components.
+ */
+
+:root {
+  /* ——— Color: surfaces ——— */
+  --hv-ink: #05070a;
+  --hv-bg: var(--hv-ink);
+  --hv-ink-elevated: #0a0d12;
+  --hv-surface: #0c1017;
+  --hv-surface-elevated: #121821;
+  --hv-surface-hover: #161d28;
+  --hv-overlay: rgba(5, 7, 10, 0.72);
+
+  /* ——— Color: text ——— */
+  --hv-fg: #f4f7fb;
+  --hv-fg-secondary: rgba(244, 247, 251, 0.78);
+  --hv-fg-muted: #8b9aaf;
+  --hv-fg-subtle: rgba(244, 247, 251, 0.48);
+
+  /* ——— Color: accent (teal brand) ——— */
+  --hv-accent: #14b8a6;
+  --hv-accent-hover: #2dd4bf;
+  --hv-accent-soft: #0f766e;
+  --hv-accent-dim: rgba(20, 184, 166, 0.12);
+  --hv-accent-mid: rgba(20, 184, 166, 0.28);
+  --hv-cyan: #22d3ee;
+  --hv-cyan-dim: rgba(34, 211, 238, 0.14);
+
+  /* ——— Color: borders ——— */
+  --hv-border: rgba(255, 255, 255, 0.08);
+  --hv-border-strong: rgba(255, 255, 255, 0.14);
+  --hv-border-accent: rgba(20, 184, 166, 0.35);
+
+  /* ——— Glass ——— */
+  --hv-glass-bg: rgba(12, 16, 23, 0.72);
+  --hv-glass-bg-strong: rgba(12, 16, 23, 0.88);
+  --hv-glass-border: rgba(255, 255, 255, 0.1);
+  --hv-glass-blur: 16px;
+
+  /* ——— Glow ——— */
+  --hv-glow-accent: rgba(20, 184, 166, 0.38);
+  --hv-glow-accent-soft: rgba(20, 184, 166, 0.14);
+  --hv-glow-cyan: rgba(34, 211, 238, 0.2);
+
+  /* ——— Gradients ——— */
+  --hv-gradient-accent: linear-gradient(
+    135deg,
+    rgba(20, 184, 166, 0.5),
+    rgba(255, 255, 255, 0.12) 42%,
+    rgba(34, 211, 238, 0.22) 72%,
+    rgba(255, 255, 255, 0.06)
+  );
+  --hv-gradient-hero: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    rgba(20, 184, 166, 0.14),
+    transparent 70%
+  );
+  --hv-gradient-section: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    rgba(20, 184, 166, 0.08),
+    transparent 70%
+  );
+
+  /* ——— Typography scale ——— */
+  --hv-font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --hv-font-display: var(--font-syne), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --hv-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --hv-text-xs: 0.6875rem; /* 11 */
+  --hv-text-sm: 0.8125rem; /* 13 */
+  --hv-text-base: 0.9375rem; /* 15 */
+  --hv-text-md: 1rem; /* 16 */
+  --hv-text-lg: 1.125rem; /* 18 */
+  --hv-text-xl: 1.25rem; /* 20 */
+  --hv-text-2xl: 1.5rem; /* 24 */
+  --hv-text-3xl: 1.875rem; /* 30 */
+  --hv-text-4xl: 2.25rem; /* 36 */
+  --hv-text-5xl: 3rem; /* 48 */
+  --hv-text-6xl: 3.75rem; /* 60 */
+  --hv-text-display: clamp(2.5rem, 5vw, 4.25rem);
+
+  --hv-leading-tight: 1.15;
+  --hv-leading-snug: 1.35;
+  --hv-leading-normal: 1.6;
+  --hv-leading-relaxed: 1.75;
+
+  --hv-tracking-tight: -0.02em;
+  --hv-tracking-normal: 0;
+  --hv-tracking-wide: 0.04em;
+  --hv-tracking-eyebrow: 0.2em;
+
+  --hv-weight-medium: 500;
+  --hv-weight-semibold: 600;
+  --hv-weight-bold: 700;
+
+  /* ——— Spacing rhythm (4px base) ——— */
+  --hv-space-1: 0.25rem;
+  --hv-space-2: 0.5rem;
+  --hv-space-3: 0.75rem;
+  --hv-space-4: 1rem;
+  --hv-space-5: 1.25rem;
+  --hv-space-6: 1.5rem;
+  --hv-space-7: 1.75rem;
+  --hv-space-8: 2rem;
+  --hv-space-10: 2.5rem;
+  --hv-space-12: 3rem;
+  --hv-space-14: 3.5rem;
+  --hv-space-16: 4rem;
+  --hv-space-20: 5rem;
+  --hv-space-24: 6rem;
+  --hv-space-28: 7rem;
+  --hv-space-32: 8rem;
+
+  --hv-section-y: clamp(4.5rem, 8vw, 7.5rem);
+  --hv-section-y-sm: clamp(3.5rem, 6vw, 5.5rem);
+  --hv-stack-gap: clamp(2.5rem, 4vw, 4rem);
+  --hv-card-gap: 1.25rem;
+
+  /* ——— Radius ——— */
+  --hv-radius-sm: 0.5rem; /* 8 */
+  --hv-radius-md: 0.75rem; /* 12 */
+  --hv-radius-lg: 1rem; /* 16 */
+  --hv-radius-xl: 1.25rem; /* 20 */
+  --hv-radius-2xl: 1.5rem; /* 24 */
+  --hv-radius-3xl: 1.75rem; /* 28 */
+  --hv-radius-full: 9999px;
+
+  /* ——— Shadows ——— */
+  --hv-shadow-xs: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  --hv-shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 4px 16px rgba(0, 0, 0, 0.2);
+  --hv-shadow-md: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 12px 40px rgba(0, 0, 0, 0.28);
+  --hv-shadow-lg: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 18px 48px rgba(0, 0, 0, 0.35);
+  --hv-shadow-xl: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 24px 64px rgba(0, 0, 0, 0.4);
+  --hv-shadow-glow: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 16px 48px rgba(0, 0, 0, 0.35), 0 0 40px var(--hv-glow-accent-soft);
+  --hv-shadow-glow-strong: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 18px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--hv-border-accent),
+    0 0 48px var(--hv-glow-accent-soft);
+
+  /* ——— Motion ——— */
+  --hv-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --hv-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --hv-duration-fast: 150ms;
+  --hv-duration-base: 250ms;
+  --hv-duration-slow: 400ms;
+  --hv-duration-slower: 600ms;
+
+  /* ——— Layout ——— */
+  --hv-nav-offset: 5.25rem;
+  --hv-container: 72rem; /* 1152px ~ max-w-6xl */
+  --hv-container-wide: 80rem;
+  --hv-prose: 42rem;
+
+  /* ——— Z-index ——— */
+  --hv-z-base: 1;
+  --hv-z-sticky: 40;
+  --hv-z-nav: 50;
+  --hv-z-overlay: 60;
+  --hv-z-modal: 70;
+  --hv-z-toast: 80;
+
+  /* ——— Legacy aliases (keep existing class/theme consumers working) ——— */
+  --background: var(--hv-ink);
+  --foreground: var(--hv-fg);
+  --nav-offset: var(--hv-nav-offset);
+  --glass-bg: var(--hv-glass-bg);
+  --glass-border: var(--hv-glass-border);
+  --glow-accent: var(--hv-glow-accent);
+  --glow-accent-soft: var(--hv-glow-accent-soft);
+}
+
+/* Light theme — premium SaaS light surface (opt-in via ThemeToggle) */
+html[data-theme="light"],
+html.light {
+  --hv-ink: #f6f7f9;
+  --hv-bg: var(--hv-ink);
+  --hv-ink-elevated: #ffffff;
+  --hv-surface: #ffffff;
+  --hv-surface-elevated: #f0f2f5;
+  --hv-surface-hover: #e8ebf0;
+  --hv-overlay: rgba(246, 247, 249, 0.78);
+
+  --hv-fg: #0b1220;
+  --hv-fg-secondary: rgba(11, 18, 32, 0.82);
+  --hv-fg-muted: #5b6577;
+  --hv-fg-subtle: rgba(11, 18, 32, 0.48);
+
+  --hv-border: rgba(11, 18, 32, 0.1);
+  --hv-border-strong: rgba(11, 18, 32, 0.16);
+  --hv-border-accent: rgba(15, 118, 110, 0.4);
+
+  --hv-glass-bg: rgba(255, 255, 255, 0.78);
+  --hv-glass-bg-strong: rgba(255, 255, 255, 0.92);
+  --hv-glass-border: rgba(11, 18, 32, 0.1);
+
+  --hv-glow-accent: rgba(20, 184, 166, 0.28);
+  --hv-glow-accent-soft: rgba(20, 184, 166, 0.12);
+
+  --hv-shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 4px 16px rgba(15, 23, 42, 0.06);
+  --hv-shadow-md: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 12px 40px rgba(15, 23, 42, 0.08);
+  --hv-shadow-lg: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 18px 48px rgba(15, 23, 42, 0.12);
+  --hv-shadow-xl: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 24px 64px rgba(15, 23, 42, 0.14);
+  --hv-shadow-glow: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 16px 48px rgba(15, 23, 42, 0.1), 0 0 40px var(--hv-glow-accent-soft);
+  --hv-shadow-glow-strong: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 18px 48px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--hv-border-accent),
+    0 0 48px var(--hv-glow-accent-soft);
+
+  --background: var(--hv-ink);
+  --foreground: var(--hv-fg);
+  --glass-bg: var(--hv-glass-bg);
+  --glass-border: var(--hv-glass-border);
+  color-scheme: light;
+}

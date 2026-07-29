@@ -1,0 +1,194 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, m } from "framer-motion";
+import { TypeSequence } from "@components/ui/TypeSequence";
+import { StatusChip } from "@components/ui/StatusChip";
+import { SectionBridge } from "@components/ui/SectionBridge";
+import { profile } from "@data/profile";
+import { engineeringIntelligenceSection } from "@data/engineering-intelligence";
+import { easeOutPremium, motionDuration } from "@lib/motion";
+
+type Props = {
+  reduceMotion: boolean;
+  active: boolean;
+};
+
+type Phase = "idle" | "typing" | "checklist" | "report";
+
+/**
+ * Editorial profile panel — brief load sequence, then clean company overview.
+ */
+export function IntelligencePanel({ reduceMotion, active }: Props) {
+  const copy = engineeringIntelligenceSection;
+  const [phase, setPhase] = useState<Phase>(reduceMotion ? "report" : "idle");
+  const [completedSteps, setCompletedSteps] = useState(
+    reduceMotion ? copy.initSteps.length : 0
+  );
+
+  useEffect(() => {
+    if (!active) return;
+    if (reduceMotion) {
+      setPhase("report");
+      setCompletedSteps(copy.initSteps.length);
+      return;
+    }
+    setPhase("typing");
+  }, [active, reduceMotion, copy.initSteps.length]);
+
+  useEffect(() => {
+    if (phase !== "checklist" || reduceMotion) return;
+
+    if (completedSteps >= copy.initSteps.length) {
+      const t = window.setTimeout(() => setPhase("report"), 280);
+      return () => window.clearTimeout(t);
+    }
+
+    const t = window.setTimeout(() => {
+      setCompletedSteps((n) => n + 1);
+    }, 420);
+
+    return () => window.clearTimeout(t);
+  }, [phase, completedSteps, copy.initSteps.length, reduceMotion]);
+
+  const statusLabel =
+    phase === "report" ? copy.statusReady : copy.statusAnalyzing;
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface/70 p-5 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset,0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-md sm:p-7 md:p-8">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 65% 50% at 100% 0%, rgba(20,184,166,0.07), transparent 55%)",
+        }}
+      />
+
+      <div className="relative z-10 flex flex-col gap-6">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-sm font-medium text-white">{profile.name}</p>
+            <p className="mt-1 text-sm text-muted">{profile.brand}</p>
+          </div>
+          <StatusChip
+            label={statusLabel}
+            tone={phase === "report" ? "accent" : "neutral"}
+          />
+        </div>
+
+        <AnimatePresence initial={false}>
+          {phase !== "report" ? (
+            <m.div
+              key="boot"
+              initial={{ opacity: 0, height: "auto" }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+              transition={{ duration: 0.35, ease: easeOutPremium }}
+              className="overflow-hidden rounded-xl border border-white/8 bg-ink/40 px-3.5 py-3"
+              aria-live="polite"
+            >
+              {(phase === "typing" || phase === "checklist") && (
+                <TypeSequence
+                  text={copy.initLine}
+                  active={phase === "typing"}
+                  onComplete={() => {
+                    if (!reduceMotion) setPhase("checklist");
+                  }}
+                />
+              )}
+
+              <ul className="mt-3 flex flex-col gap-2">
+                {copy.initSteps.map((step, index) => {
+                  const done = index < completedSteps;
+                  return (
+                    <li
+                      key={step.id}
+                      className={`flex items-center gap-2 text-xs sm:text-sm ${
+                        done ? "text-white/80" : "text-white/30"
+                      }`}
+                    >
+                      <span
+                        className={`inline-flex h-4 w-4 items-center justify-center rounded-full border text-[9px] ${
+                          done
+                            ? "border-accent/40 bg-accent/10 text-accent"
+                            : "border-white/12 text-transparent"
+                        }`}
+                        aria-hidden
+                      >
+                        ✓
+                      </span>
+                      {step.label}
+                    </li>
+                  );
+                })}
+              </ul>
+            </m.div>
+          ) : null}
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          {phase === "report" ? (
+            <m.div
+              key="report"
+              initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: reduceMotion ? 0.01 : motionDuration.base,
+                ease: easeOutPremium,
+              }}
+              className="flex flex-col gap-5"
+            >
+              <div>
+                <h3 className="text-xl font-semibold tracking-tight text-white md:text-2xl">
+                  Full Stack Development & AI Automation
+                </h3>
+                <p className="mt-1.5 text-sm text-muted">{profile.location}</p>
+              </div>
+
+              {copy.modules.map((module, index) => (
+                <m.article
+                  key={module.id}
+                  initial={reduceMotion ? false : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: reduceMotion ? 0 : 0.05 + index * 0.05,
+                    duration: motionDuration.base,
+                    ease: easeOutPremium,
+                  }}
+                  className="border-t border-white/8 pt-4 first:border-t-0 first:pt-0"
+                >
+                  <p className="text-xs font-medium tracking-wide text-accent">
+                    {module.label}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/75 md:text-[0.95rem]">
+                    {module.body}
+                  </p>
+                  {module.items?.length ? (
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {module.items.map((item) => (
+                        <li
+                          key={item}
+                          className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-white/65"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </m.article>
+              ))}
+
+              <SectionBridge
+                className="pt-2"
+                hint={copy.conclusion}
+                label={copy.ctaLabel}
+                href={copy.ctaHref}
+              />
+            </m.div>
+          ) : null}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
