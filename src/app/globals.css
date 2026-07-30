@@ -116,6 +116,150 @@ html.light .hv-page-shell {
   background: var(--hv-ink);
 }
 
+/* Light theme: kill cloudy white-on-white frost + oversized teal haze */
+html[data-theme="light"],
+html.light {
+  --glow-accent: var(--hv-glow-accent);
+  --glow-accent-soft: var(--hv-glow-accent-soft);
+}
+
+html[data-theme="light"] body,
+html.light body,
+html[data-theme="light"] .hv-page-shell,
+html.light .hv-page-shell {
+  background-color: #c8d0dc !important;
+  background-image: none !important;
+  color: #0b1220 !important;
+}
+
+/* Hide ambient haze layers entirely in light mode */
+html[data-theme="light"] .hv-float-orb,
+html.light .hv-float-orb,
+html[data-theme="light"] .hero-aurora,
+html.light .hero-aurora,
+html[data-theme="light"] .noise-overlay,
+html.light .noise-overlay,
+html[data-theme="light"] .hv-section-wash,
+html.light .hv-section-wash {
+  display: none !important;
+}
+
+html[data-theme="light"] .blur-3xl,
+html[data-theme="light"] .blur-2xl,
+html[data-theme="light"] .blur-\[100px\],
+html[data-theme="light"] .blur-\[110px\],
+html[data-theme="light"] .blur-\[90px\],
+html[data-theme="light"] .blur-\[80px\],
+html.light .blur-3xl,
+html.light .blur-2xl,
+html.light .blur-\[100px\],
+html.light .blur-\[110px\],
+html.light .blur-\[90px\],
+html.light .blur-\[80px\] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+html[data-theme="light"] .bg-black\/20,
+html[data-theme="light"] .bg-black\/25,
+html[data-theme="light"] .bg-ink\/40,
+html[data-theme="light"] .bg-ink\/45,
+html[data-theme="light"] .bg-ink\/50,
+html[data-theme="light"] .bg-ink\/70,
+html.light .bg-black\/20,
+html.light .bg-black\/25,
+html.light .bg-ink\/40,
+html.light .bg-ink\/45,
+html.light .bg-ink\/50,
+html.light .bg-ink\/70 {
+  background-color: #e8edf4 !important;
+}
+
+html[data-theme="light"] .bg-white\/\[0\.02\],
+html[data-theme="light"] .bg-white\/\[0\.025\],
+html[data-theme="light"] .bg-white\/\[0\.03\],
+html[data-theme="light"] .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.025\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\] {
+  background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .border-white\/8,
+html[data-theme="light"] .border-white\/10,
+html[data-theme="light"] .border-white\/12,
+html[data-theme="light"] .border-white\/15,
+html.light .border-white\/8,
+html.light .border-white\/10,
+html.light .border-white\/12,
+html.light .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.18) !important;
+}
+
+html[data-theme="light"] .text-white\/55,
+html[data-theme="light"] .text-white\/65,
+html[data-theme="light"] .text-white\/80,
+html[data-theme="light"] .text-white\/85,
+html.light .text-white\/55,
+html.light .text-white\/65,
+html.light .text-white\/80,
+html.light .text-white\/85 {
+  color: rgba(11, 18, 32, 0.78) !important;
+}
+
+html[data-theme="light"] .hv-glass,
+html[data-theme="light"] .hv-card,
+html[data-theme="light"] .glass-card,
+html[data-theme="light"] .gradient-border,
+html.light .hv-glass,
+html.light .hv-card,
+html.light .glass-card,
+html.light .gradient-border {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html[data-theme="light"] .bg-accent\/\[0\.05\],
+html[data-theme="light"] .bg-accent\/\[0\.07\],
+html[data-theme="light"] .bg-accent\/\[0\.08\],
+html[data-theme="light"] .bg-accent\/\[0\.1\],
+html[data-theme="light"] .bg-cyan-400\/\[0\.04\],
+html[data-theme="light"] .bg-cyan-400\/\[0\.06\],
+html[data-theme="light"] .bg-cyan-400\/\[0\.08\],
+html[data-theme="light"] .bg-teal-500\/\[0\.035\],
+html[data-theme="light"] .bg-teal-500\/\[0\.05\],
+html[data-theme="light"] .bg-teal-500\/\[0\.07\],
+html.light .bg-accent\/\[0\.05\],
+html.light .bg-accent\/\[0\.07\],
+html.light .bg-accent\/\[0\.08\],
+html.light .bg-accent\/\[0\.1\],
+html.light .bg-cyan-400\/\[0\.04\],
+html.light .bg-cyan-400\/\[0\.06\],
+html.light .bg-cyan-400\/\[0\.08\],
+html.light .bg-teal-500\/\[0\.035\],
+html.light .bg-teal-500\/\[0\.05\],
+html.light .bg-teal-500\/\[0\.07\] {
+  background-color: transparent !important;
+}
+
+html[data-theme="light"] .hv-orbit-glow,
+html.light .hv-orbit-glow {
+  opacity: 0.2 !important;
+  filter: blur(1px) !important;
+}
+
+html[data-theme="light"] [class*="bg-accent/\\[0.07\\]"],
+html[data-theme="light"] [class*="bg-accent/[0.07]"],
+html[data-theme="light"] [class*="bg-accent/[0.08]"],
+html.light [class*="bg-accent/[0.07]"],
+html.light [class*="bg-accent/[0.08]"] {
+  background-color: transparent !important;
+}
+
 ::selection {
   background: var(--hv-accent-mid);
   color: #fff;

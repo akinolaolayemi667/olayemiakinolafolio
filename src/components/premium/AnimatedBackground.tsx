@@ -18,7 +18,7 @@ const intensityOrb = {
  */
 export function AnimatedBackground({
   variant = "fixed",
-  intensity = "medium",
+      intensity = "soft",
   className = "",
 }: Props) {
   const [a, b, c] = intensityOrb[intensity];

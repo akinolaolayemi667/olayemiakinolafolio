@@ -149,10 +149,10 @@ export default function ExpertiseHub() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 hv-section-wash"
         style={{
           background:
-            "radial-gradient(ellipse 55% 45% at 12% 35%, rgba(20,184,166,0.1), transparent 58%), radial-gradient(ellipse 42% 38% at 92% 18%, rgba(45,212,191,0.06), transparent 55%), linear-gradient(180deg, transparent, rgba(14,18,24,0.35))",
+            "radial-gradient(ellipse 55% 45% at 12% 35%, var(--hv-accent-dim), transparent 58%), radial-gradient(ellipse 42% 38% at 92% 18%, var(--hv-cyan-dim), transparent 55%), linear-gradient(180deg, transparent, color-mix(in srgb, var(--hv-ink) 35%, transparent))",
         }}
       />
 
@@ -183,8 +183,8 @@ export default function ExpertiseHub() {
                 onClick={() => setMotionEnabled((prev) => !prev)}
                 className={`rounded-xl border px-3 py-2 text-xs font-medium transition-colors sm:text-sm ${
                   motionEnabled
-                    ? "border-accent/40 bg-accent/12 text-white"
-                    : "border-white/12 bg-ink/45 text-white/70 hover:border-accent/30 hover:text-white"
+                    ? "border-accent/40 bg-accent/12 text-[color:var(--hv-fg)]"
+                    : "border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] text-[color:var(--hv-fg-muted)] hover:border-accent/30 hover:text-[color:var(--hv-fg)]"
                 }`}
               >
                 {motionEnabled ? "Pause orbit motion" : "Resume orbit motion"}
@@ -196,7 +196,7 @@ export default function ExpertiseHub() {
                 className={`rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${
                   rotationDuration === 10
                     ? "border-accent/40 bg-accent/10 text-accent"
-                    : "border-white/10 text-white/65 hover:border-accent/30 hover:text-white"
+                    : "border-[color:var(--hv-border)] text-[color:var(--hv-fg-muted)] hover:border-accent/30 hover:text-[color:var(--hv-fg)]"
                 }`}
               >
                 Fast
@@ -207,7 +207,7 @@ export default function ExpertiseHub() {
                 className={`rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${
                   rotationDuration === 14
                     ? "border-accent/40 bg-accent/10 text-accent"
-                    : "border-white/10 text-white/65 hover:border-accent/30 hover:text-white"
+                    : "border-[color:var(--hv-border)] text-[color:var(--hv-fg-muted)] hover:border-accent/30 hover:text-[color:var(--hv-fg)]"
                 }`}
               >
                 Balanced
@@ -218,7 +218,7 @@ export default function ExpertiseHub() {
                 className={`rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${
                   rotationDuration === 20
                     ? "border-accent/40 bg-accent/10 text-accent"
-                    : "border-white/10 text-white/65 hover:border-accent/30 hover:text-white"
+                    : "border-[color:var(--hv-border)] text-[color:var(--hv-fg-muted)] hover:border-accent/30 hover:text-[color:var(--hv-fg)]"
                 }`}
               >
                 Slow
@@ -283,30 +283,30 @@ export default function ExpertiseHub() {
                   }
                   className={`rounded-xl border p-3.5 backdrop-blur-md ${
                     displayedCategoryId === item.id
-                      ? "border-accent/40 bg-accent/[0.08] shadow-[0_0_22px_rgba(20,184,166,0.16)]"
-                      : "border-white/10 bg-white/[0.02]"
+                      ? "border-accent/40 bg-accent/[0.08] shadow-[var(--hv-shadow-md)]"
+                      : "border-[color:var(--hv-border)] bg-[color:var(--hv-surface-elevated)]"
                   }`}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/45">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--hv-fg-muted)]">
                     Architecture Blueprint
                   </p>
                   <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-accent">
                     {item.title}
                   </p>
-                  <p className="mt-2 text-xs leading-relaxed text-white/70">
+                  <p className="mt-2 text-xs leading-relaxed text-[color:var(--hv-fg-secondary)]">
                     {item.capabilities.slice(0, 2).join(" + ")}
                   </p>
-                  <p className="mt-2 text-[11px] text-white/50">
+                  <p className="mt-2 text-[11px] text-[color:var(--hv-fg-muted)]">
                     {item.technologies.slice(0, 2).join(" / ")}
                   </p>
                   <div className="mt-3 flex items-center gap-1.5">
-                    <span className="rounded-md border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-white/60">
+                    <span className="rounded-md border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-[color:var(--hv-fg-muted)]">
                       Ingress
                     </span>
-                    <span className="rounded-md border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-white/60">
+                    <span className="rounded-md border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-[color:var(--hv-fg-muted)]">
                       Processing
                     </span>
-                    <span className="rounded-md border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-white/60">
+                    <span className="rounded-md border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-[color:var(--hv-fg-muted)]">
                       Delivery
                     </span>
                   </div>
@@ -314,21 +314,21 @@ export default function ExpertiseHub() {
               ))}
             </div>
 
-            <div className="mt-4 rounded-2xl border border-white/12 bg-white/[0.025] p-4 backdrop-blur-md">
+            <div className="mt-4 rounded-2xl border border-[color:var(--hv-border-strong)] bg-[color:var(--hv-surface-elevated)] p-4 shadow-[var(--hv-shadow-sm)]">
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
                 Architecture Principles
               </p>
-              <ul className="mt-3 grid gap-2 text-xs text-white/70 sm:grid-cols-2">
-                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+              <ul className="mt-3 grid gap-2 text-xs text-[color:var(--hv-fg-secondary)] sm:grid-cols-2">
+                <li className="rounded-lg border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-3 py-2">
                   Domain-first boundaries with typed contracts between layers
                 </li>
-                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                <li className="rounded-lg border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-3 py-2">
                   Event-ready flows for automation, observability, and retries
                 </li>
-                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                <li className="rounded-lg border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-3 py-2">
                   Progressive enhancement from MVP to production architecture
                 </li>
-                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                <li className="rounded-lg border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-3 py-2">
                   Security-aware defaults across auth, data, and delivery paths
                 </li>
               </ul>

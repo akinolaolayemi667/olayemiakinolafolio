@@ -87,7 +87,7 @@ export function Orbit({
       {/* Ambient cyan core glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-[8%] rounded-full"
+        className="pointer-events-none absolute inset-[8%] rounded-full hv-orbit-glow"
         style={{
           background: `radial-gradient(circle at 50% 50%, rgba(0,229,255,0.28), rgba(0,229,255,0.08) 42%, transparent 68%)`,
           filter: "blur(2px)",

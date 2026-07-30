@@ -45,8 +45,8 @@ export function ExpertisePanel({
               onClick={() => onSelectCategory(item.id)}
               className={`relative min-h-11 rounded-xl border px-3 py-2 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink sm:text-sm ${
                 selected
-                  ? "border-accent/45 bg-accent/15 text-white"
-                  : "border-white/10 bg-ink/40 text-white/65 hover:border-accent/30 hover:text-white"
+                  ? "border-accent/45 bg-accent/15 text-[color:var(--hv-fg)]"
+                  : "border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] text-[color:var(--hv-fg-muted)] hover:border-accent/30 hover:text-[color:var(--hv-fg)]"
               }`}
             >
               {item.title}
@@ -78,13 +78,13 @@ export function ExpertisePanel({
               ? { duration: 0.01 }
               : { duration: motionDuration.base, ease: easeOutPremium }
           }
-          className="relative overflow-hidden rounded-2xl border border-white/12 bg-white/[0.03] p-5 shadow-[0_1px_0_rgba(255,255,255,0.06)_inset,0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6 md:p-7"
+          className="relative overflow-hidden rounded-2xl border border-[color:var(--hv-border-strong)] bg-[color:var(--hv-glass-bg-strong)] p-5 shadow-[var(--hv-shadow-lg)] backdrop-blur-[var(--hv-glass-blur)] sm:p-6 md:p-7"
         >
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
-              background: `radial-gradient(ellipse 75% 55% at 0% 0%, ${category.accentColor}28, transparent 55%), linear-gradient(180deg, rgba(255,255,255,0.03), transparent 40%)`,
+              background: `radial-gradient(ellipse 75% 55% at 0% 0%, color-mix(in srgb, ${category.accentColor} 18%, transparent), transparent 55%), linear-gradient(180deg, color-mix(in srgb, var(--hv-fg) 3%, transparent), transparent 40%)`,
             }}
           />
 
@@ -100,19 +100,19 @@ export function ExpertisePanel({
                   </span>
                 ) : null}
               </div>
-              <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+              <h3 className="text-xl font-semibold tracking-tight text-[color:var(--hv-fg)] sm:text-2xl">
                 {category.title}
               </h3>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
                 {copy.whatIBuildLabel}
               </p>
-              <p className="max-w-xl text-sm leading-relaxed text-white/80 md:text-[0.95rem]">
+              <p className="max-w-xl text-sm leading-relaxed text-[color:var(--hv-fg-secondary)] md:text-[0.95rem]">
                 {category.whatIBuild}
               </p>
 
               {!reduceMotion ? (
                 <m.div
-                  className="h-1 overflow-hidden rounded-full bg-white/10"
+                  className="h-1 overflow-hidden rounded-full bg-[color:var(--hv-border)]"
                   aria-hidden
                 >
                   <m.div
@@ -155,7 +155,7 @@ export function ExpertisePanel({
                 {category.capabilities.map((item) => (
                   <li
                     key={item}
-                    className="flex gap-2.5 text-sm leading-relaxed text-white/80"
+                    className="flex gap-2.5 text-sm leading-relaxed text-[color:var(--hv-fg-secondary)]"
                   >
                     <span
                       aria-hidden
@@ -184,8 +184,8 @@ export function ExpertisePanel({
                       key={tool}
                       className={`rounded-lg border px-2.5 py-1.5 text-xs sm:text-sm ${
                         highlighted
-                          ? "border-accent/50 bg-accent/15 text-white"
-                          : "border-white/10 bg-ink/50 text-white/75"
+                          ? "border-accent/50 bg-accent/15 text-[color:var(--hv-fg)]"
+                          : "border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] text-[color:var(--hv-fg-secondary)]"
                       }`}
                     >
                       {tool}
@@ -206,7 +206,7 @@ export function ExpertisePanel({
                 {category.outcomes.map((outcome) => (
                   <li
                     key={outcome}
-                    className="rounded-xl border border-accent/15 bg-accent/[0.07] px-3 py-2.5 text-sm text-white/85"
+                    className="rounded-xl border border-accent/20 bg-accent/[0.08] px-3 py-2.5 text-sm text-[color:var(--hv-fg-secondary)]"
                   >
                     {outcome}
                   </li>
@@ -214,7 +214,7 @@ export function ExpertisePanel({
               </ul>
             </section>
 
-            <div className="border-t border-white/10 pt-5">
+            <div className="border-t border-[color:var(--hv-border)] pt-5">
               <PrimaryButton href={copy.ctaHref} className="w-full sm:w-auto">
                 {copy.ctaLabel}
               </PrimaryButton>

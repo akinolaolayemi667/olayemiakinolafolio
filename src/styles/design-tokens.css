@@ -176,46 +176,63 @@
   --glow-accent-soft: var(--hv-glow-accent-soft);
 }
 
-/* Light theme — premium SaaS light surface (opt-in via ThemeToggle) */
+/* Light theme — clearly separated slate canvas + solid white cards */
 html[data-theme="light"],
 html.light {
-  --hv-ink: #f6f7f9;
+  --hv-ink: #c8d0dc;
   --hv-bg: var(--hv-ink);
-  --hv-ink-elevated: #ffffff;
-  --hv-surface: #ffffff;
-  --hv-surface-elevated: #f0f2f5;
-  --hv-surface-hover: #e8ebf0;
-  --hv-overlay: rgba(246, 247, 249, 0.78);
+  --hv-ink-elevated: #d9e0ea;
+  --hv-surface: #eef2f7;
+  --hv-surface-elevated: #ffffff;
+  --hv-surface-hover: #e2e8f0;
+  --hv-overlay: rgba(15, 23, 42, 0.45);
 
   --hv-fg: #0b1220;
-  --hv-fg-secondary: rgba(11, 18, 32, 0.82);
-  --hv-fg-muted: #5b6577;
-  --hv-fg-subtle: rgba(11, 18, 32, 0.48);
+  --hv-fg-secondary: rgba(11, 18, 32, 0.8);
+  --hv-fg-muted: #334155;
+  --hv-fg-subtle: rgba(11, 18, 32, 0.55);
 
-  --hv-border: rgba(11, 18, 32, 0.1);
-  --hv-border-strong: rgba(11, 18, 32, 0.16);
-  --hv-border-accent: rgba(15, 118, 110, 0.4);
+  --hv-accent-dim: rgba(15, 118, 110, 0.1);
+  --hv-accent-mid: rgba(15, 118, 110, 0.22);
+  --hv-cyan-dim: rgba(8, 145, 178, 0.08);
 
-  --hv-glass-bg: rgba(255, 255, 255, 0.78);
-  --hv-glass-bg-strong: rgba(255, 255, 255, 0.92);
-  --hv-glass-border: rgba(11, 18, 32, 0.1);
+  --hv-border: rgba(15, 23, 42, 0.16);
+  --hv-border-strong: rgba(15, 23, 42, 0.26);
+  --hv-border-accent: rgba(13, 148, 136, 0.5);
 
-  --hv-glow-accent: rgba(20, 184, 166, 0.28);
-  --hv-glow-accent-soft: rgba(20, 184, 166, 0.12);
+  /* Solid surfaces — no frosted white haze */
+  --hv-glass-bg: #ffffff;
+  --hv-glass-bg-strong: #ffffff;
+  --hv-glass-border: rgba(15, 23, 42, 0.18);
+  --hv-glass-blur: 0px;
 
-  --hv-shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 4px 16px rgba(15, 23, 42, 0.06);
-  --hv-shadow-md: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 12px 40px rgba(15, 23, 42, 0.08);
-  --hv-shadow-lg: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 18px 48px rgba(15, 23, 42, 0.12);
-  --hv-shadow-xl: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
-    0 24px 64px rgba(15, 23, 42, 0.14);
-  --hv-shadow-glow: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 16px 48px rgba(15, 23, 42, 0.1), 0 0 40px var(--hv-glow-accent-soft);
-  --hv-shadow-glow-strong: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
-    0 18px 48px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--hv-border-accent),
-    0 0 48px var(--hv-glow-accent-soft);
+  --hv-glow-accent: rgba(13, 148, 136, 0.12);
+  --hv-glow-accent-soft: rgba(13, 148, 136, 0.04);
+  --hv-glow-cyan: rgba(8, 145, 178, 0.05);
+
+  --hv-gradient-accent: linear-gradient(
+    135deg,
+    rgba(13, 148, 136, 0.55),
+    rgba(15, 23, 42, 0.12) 42%,
+    rgba(8, 145, 178, 0.28) 72%,
+    rgba(15, 23, 42, 0.08)
+  );
+  --hv-gradient-hero: none;
+  --hv-gradient-section: none;
+
+  --hv-shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --hv-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(15, 23, 42, 0.08);
+  --hv-shadow-md: 0 2px 4px rgba(15, 23, 42, 0.08),
+    0 10px 28px rgba(15, 23, 42, 0.12);
+  --hv-shadow-lg: 0 4px 8px rgba(15, 23, 42, 0.08),
+    0 16px 40px rgba(15, 23, 42, 0.14);
+  --hv-shadow-xl: 0 8px 16px rgba(15, 23, 42, 0.1),
+    0 24px 48px rgba(15, 23, 42, 0.16);
+  --hv-shadow-glow: 0 4px 8px rgba(15, 23, 42, 0.08),
+    0 14px 32px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--hv-border-accent);
+  --hv-shadow-glow-strong: 0 6px 12px rgba(15, 23, 42, 0.1),
+    0 18px 40px rgba(15, 23, 42, 0.14), 0 0 0 1px var(--hv-border-accent);
 
   --background: var(--hv-ink);
   --foreground: var(--hv-fg);

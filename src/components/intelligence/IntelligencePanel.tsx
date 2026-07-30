@@ -66,10 +66,10 @@ export function IntelligencePanel({ reduceMotion, active }: Props) {
     phase === "report" ? copy.statusReady : copy.statusAnalyzing;
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-[color:var(--hv-glass-bg)] p-5 shadow-[var(--hv-shadow-lg)] backdrop-blur-[var(--hv-glass-blur)] sm:p-7 md:p-8">
+    <div className="relative overflow-hidden rounded-[1.75rem] border border-[color:var(--hv-border-strong)] bg-[color:var(--hv-glass-bg-strong)] p-5 shadow-[var(--hv-shadow-lg)] backdrop-blur-[var(--hv-glass-blur)] sm:p-7 md:p-8">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_100%_0%,rgba(20,184,166,0.1),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_100%_0%,var(--hv-accent-dim),transparent_55%)]"
       />
 
       <div className="relative z-10 flex flex-col gap-6">

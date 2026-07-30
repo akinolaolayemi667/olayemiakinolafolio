@@ -48,10 +48,10 @@ export default function EngineeringIntelligence() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 hv-section-wash"
         style={{
           background:
-            "radial-gradient(ellipse 50% 40% at 18% 40%, rgba(20,184,166,0.1), transparent 55%), radial-gradient(ellipse 40% 35% at 88% 20%, rgba(45,212,191,0.05), transparent 50%)",
+            "radial-gradient(ellipse 50% 40% at 18% 40%, var(--hv-accent-dim), transparent 55%), radial-gradient(ellipse 40% 35% at 88% 20%, var(--hv-cyan-dim), transparent 50%)",
         }}
       />
 

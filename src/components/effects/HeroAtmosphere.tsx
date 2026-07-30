@@ -13,7 +13,7 @@ export function HeroAtmosphere() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, var(--hv-ink) 0%, color-mix(in srgb, var(--hv-ink) 88%, #0a1220) 55%, var(--hv-surface) 100%), var(--hv-gradient-hero)",
+              "linear-gradient(180deg, var(--hv-ink) 0%, color-mix(in srgb, var(--hv-ink) 88%, var(--hv-surface)) 55%, var(--hv-surface) 100%), var(--hv-gradient-hero)",
           }}
         />
         <div
