@@ -5,16 +5,17 @@
   "private": true,
   "scripts": {
     "dev": "node --max-old-space-size=4096 node_modules/next/dist/bin/next dev",
-    "build": "node --max-old-space-size=4096 node_modules/next/dist/bin/next build",
+    "build": "node --max-old-space-size=8192 node_modules/next/dist/bin/next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "node --max-old-space-size=8192 node_modules/typescript/bin/tsc --noEmit",
     "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true}); console.log('cleared .next')\"",
     "dev:clean": "npm run clean && npm run dev"
   },
   "dependencies": {
     "framer-motion": "^12.4.7",
     "lucide-react": "^1.27.0",
-    "next": "15.1.7",
+    "next": "15.5.22",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -25,9 +26,14 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.1.7",
-    "postcss": "^8.5.3",
+    "eslint-config-next": "15.5.22",
+    "postcss": "^8.5.25",
     "tailwindcss": "^4.0.14",
     "typescript": "^5"
+  },
+  "overrides": {
+    "brace-expansion": "5.0.8",
+    "postcss": "^8.5.25",
+    "sharp": "0.35.3"
   }
 }
