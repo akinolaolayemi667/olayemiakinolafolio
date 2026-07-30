@@ -8,9 +8,9 @@ const EngineeringIntelligence = dynamic(
   () => import("@components/intelligence/EngineeringIntelligence"),
   { loading: () => <SectionPlaceholder minHeight="32rem" /> }
 );
-const TechnologyShowcase = dynamic(
-  () => import("@components/Home/TechnologyShowcase"),
-  { loading: () => <SectionPlaceholder minHeight="28rem" /> }
+const ExpertiseHub = dynamic(
+  () => import("@components/expertise/ExpertiseHub"),
+  { loading: () => <SectionPlaceholder minHeight="32rem" /> }
 );
 const FeaturedProjects = dynamic(
   () => import("@components/Projects/FeaturedProjects"),
@@ -61,7 +61,7 @@ export default function HomePage() {
       <AnswerEngineSummary />
       <MotionProvider>
         <EngineeringIntelligence />
-        <TechnologyShowcase />
+        <ExpertiseHub />
         <FeaturedProjects />
         <Services />
         <Process />

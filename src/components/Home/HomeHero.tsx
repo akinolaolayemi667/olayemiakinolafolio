@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type PointerEvent } from "react";
+import { useEffect, useRef, type PointerEvent } from "react";
 import { m, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { Container } from "@components/ui/Container";
 import { AvailabilityBadge } from "@components/ui/AvailabilityBadge";
@@ -10,13 +10,14 @@ import { HeroAtmosphere } from "@components/effects/HeroAtmosphere";
 import { HeroSpotlight } from "@components/effects/HeroSpotlight";
 import { FloatingGrid } from "@components/premium/FloatingGrid";
 import { BrandMark } from "@components/brand/BrandMark";
+import { HeroPortrait } from "@components/brand/HeroPortrait";
 import { HeroStagger, HeroItem } from "@components/ui/Motion";
 import { MotionProvider } from "@components/ui/MotionProvider";
 import { hero } from "@data/hero";
 import { profile } from "@data/profile";
 import { getSocial, isPublishableSocialUrl } from "@data/socials";
 
-/** Premium engineering landing hero — brand-first, restrained composition. */
+/** Premium engineering landing hero — brand + founder portrait. */
 export default function HomeHero() {
   const reduce = Boolean(useReducedMotion());
   const sectionRef = useRef<HTMLElement>(null);
@@ -24,6 +25,19 @@ export default function HomeHero() {
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 42, damping: 18, mass: 0.35 });
   const sy = useSpring(my, { stiffness: 42, damping: 18, mass: 0.35 });
+  const ix = useMotionValue(0);
+  const iy = useMotionValue(0);
+  const isx = useSpring(ix, { stiffness: 42, damping: 18, mass: 0.35 });
+  const isy = useSpring(iy, { stiffness: 42, damping: 18, mass: 0.35 });
+
+  useEffect(() => {
+    const unsubX = sx.on("change", (v) => ix.set(-v * 0.55));
+    const unsubY = sy.on("change", (v) => iy.set(-v * 0.55));
+    return () => {
+      unsubX();
+      unsubY();
+    };
+  }, [sx, sy, ix, iy]);
 
   const github = getSocial("github");
   const showGitHub = isPublishableSocialUrl(github.url);
@@ -56,76 +70,86 @@ export default function HomeHero() {
         <HeroSpotlight />
         <FloatingGrid opacity={0.06} cellSize={64} />
 
-        {/* Single parallax accent plane — quiet depth */}
         <m.div
           aria-hidden
-          className="pointer-events-none absolute -right-[12%] top-[18%] h-[28rem] w-[28rem] rounded-full bg-accent/[0.07] blur-[100px] motion-reduce:hidden"
+          className="pointer-events-none absolute -right-[8%] top-[14%] h-[32rem] w-[32rem] rounded-full bg-accent/[0.08] blur-[110px] motion-reduce:hidden"
           style={reduce ? undefined : { x: sx, y: sy }}
         />
 
-        <Container className="relative z-10 py-28 sm:py-32 md:py-36 lg:py-40">
-          <m.div style={reduce ? undefined : { x: sx, y: sy }}>
-            <HeroStagger className="flex max-w-4xl flex-col gap-8 md:gap-10">
-              <HeroItem>
-                <AvailabilityBadge />
-              </HeroItem>
+        <Container className="relative z-10 py-24 sm:py-28 md:py-32 lg:py-36">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 xl:gap-20">
+            <m.div style={reduce ? undefined : { x: sx, y: sy }}>
+              <HeroStagger className="flex max-w-xl flex-col gap-7 md:gap-9 xl:max-w-2xl">
+                <HeroItem>
+                  <AvailabilityBadge />
+                </HeroItem>
 
-              <HeroItem>
-                <BrandMark size="hero" />
-              </HeroItem>
+                <HeroItem>
+                  <BrandMark size="hero" />
+                </HeroItem>
 
-              <HeroItem>
-                <div className="flex flex-col gap-5 md:gap-6">
-                  <h1
-                    id="home-hero-heading"
-                    className="hv-heading-xl max-w-3xl text-balance !text-[clamp(1.65rem,3.8vw,2.75rem)]"
-                  >
-                    {hero.headline}
-                  </h1>
-                  <p className="hv-body-lg max-w-2xl">{hero.subheadline}</p>
-                </div>
-              </HeroItem>
-
-              <HeroItem>
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                    <MagneticButton href={hero.primaryHref} glow>
-                      {hero.primaryCta}
-                    </MagneticButton>
-                    <MagneticButton
-                      href={hero.secondaryHref}
-                      variant="secondary"
+                <HeroItem>
+                  <div className="flex flex-col gap-5 md:gap-6">
+                    <h1
+                      id="home-hero-heading"
+                      className="hv-heading-xl max-w-xl text-balance !text-[clamp(1.55rem,3.4vw,2.55rem)]"
                     >
-                      {hero.secondaryCta}
-                    </MagneticButton>
+                      {hero.headline}
+                    </h1>
+                    <p className="hv-body-lg max-w-lg">{hero.subheadline}</p>
                   </div>
+                </HeroItem>
 
-                  <div className="flex flex-wrap items-center gap-3">
-                    {showGitHub ? (
-                      <MagneticButton
-                        href={github.url}
-                        variant="ghost"
-                        ariaLabel={github.label}
-                      >
-                        <GitHubIcon />
-                        {github.label}
+                <HeroItem>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                      <MagneticButton href={hero.primaryHref} glow>
+                        {hero.primaryCta}
                       </MagneticButton>
-                    ) : null}
-                    {showResume ? (
                       <MagneticButton
-                        href={profile.resumePath}
-                        variant="ghost"
-                        ariaLabel="Download resume"
+                        href={hero.secondaryHref}
+                        variant="secondary"
                       >
-                        <ResumeIcon />
-                        Resume
+                        {hero.secondaryCta}
                       </MagneticButton>
-                    ) : null}
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      {showGitHub ? (
+                        <MagneticButton
+                          href={github.url}
+                          variant="ghost"
+                          ariaLabel={github.label}
+                        >
+                          <GitHubIcon />
+                          {github.label}
+                        </MagneticButton>
+                      ) : null}
+                      {showResume ? (
+                        <MagneticButton
+                          href={profile.resumePath}
+                          variant="ghost"
+                          ariaLabel="Download resume"
+                        >
+                          <ResumeIcon />
+                          Resume
+                        </MagneticButton>
+                      ) : null}
+                    </div>
                   </div>
-                </div>
-              </HeroItem>
-            </HeroStagger>
-          </m.div>
+                </HeroItem>
+              </HeroStagger>
+            </m.div>
+
+            <div className="relative flex justify-center lg:justify-end">
+              <m.div
+                style={reduce ? undefined : { x: isx, y: isy }}
+                className="w-full max-w-[22rem] sm:max-w-[24rem] lg:max-w-[26rem]"
+              >
+                <HeroPortrait />
+              </m.div>
+            </div>
+          </div>
         </Container>
 
         <ScrollIndicator />

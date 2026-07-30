@@ -1,2 +1,1 @@
-# Legacy /favicon.ico requests (file was an invalid PNG rename)
-/favicon.ico  /icon-192.png  302
+# Keep empty unless a real redirect is needed.

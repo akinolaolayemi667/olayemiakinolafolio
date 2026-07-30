@@ -11,6 +11,8 @@ type Props = {
   /** Node currently emphasized (selection or hover preview). */
   highlightNodeId: string | null;
   reduceMotion: boolean;
+  motionEnabled?: boolean;
+  rotationDuration?: number;
   onSelect: (node: TExpertiseOrbitNode) => void;
   onPreview: (node: TExpertiseOrbitNode | null) => void;
   size: number;
@@ -53,6 +55,8 @@ export function Orbit({
   activeNodeId,
   highlightNodeId,
   reduceMotion,
+  motionEnabled = true,
+  rotationDuration = ORBIT_DURATION,
   onSelect,
   onPreview,
   size,
@@ -65,8 +69,10 @@ export function Orbit({
   const active = positioned.find((node) => node.id === activeNodeId);
   const emphasizedId = highlightNodeId ?? activeNodeId;
 
+  // Allow explicit user toggle to force animation, even if OS reduce-motion is enabled.
+  const canAnimate = motionEnabled;
   const orbitSpin = {
-    duration: ORBIT_DURATION,
+    duration: rotationDuration,
     repeat: Infinity,
     ease: "linear" as const,
   };
@@ -134,7 +140,7 @@ export function Orbit({
             <stop offset="100%" stopColor={CYAN} stopOpacity="0" />
           </linearGradient>
         </defs>
-        {!reduceMotion ? (
+        {canAnimate ? (
           <m.g
             animate={{ rotate: 360 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -166,7 +172,7 @@ export function Orbit({
             strokeDasharray={`${Math.PI * rInner * 0.22} ${Math.PI * rInner * 1.78}`}
           />
         )}
-        {!reduceMotion ? (
+        {canAnimate ? (
           <m.g
             animate={{ rotate: -360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
@@ -193,8 +199,8 @@ export function Orbit({
       {/* Rotating outer orbit + nodes */}
       <m.div
         className="absolute inset-0"
-        animate={reduceMotion ? undefined : { rotate: 360 }}
-        transition={reduceMotion ? undefined : orbitSpin}
+        animate={canAnimate ? { rotate: 360 } : undefined}
+        transition={canAnimate ? orbitSpin : undefined}
       >
         <svg
           className="pointer-events-none absolute inset-0"
@@ -241,8 +247,8 @@ export function Orbit({
           >
             {/* Counter-rotate so logos stay upright while the orbit spins */}
             <m.div
-              animate={reduceMotion ? undefined : { rotate: -360 }}
-              transition={reduceMotion ? undefined : orbitSpin}
+              animate={canAnimate ? { rotate: -360 } : undefined}
+              transition={canAnimate ? orbitSpin : undefined}
             >
               <OrbitNode
                 node={node}
@@ -258,7 +264,7 @@ export function Orbit({
 
       {/* Glowing React core */}
       <div className="absolute left-1/2 top-1/2 z-10 flex h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 items-center justify-center sm:h-[5.75rem] sm:w-[5.75rem]">
-        {!reduceMotion ? (
+        {canAnimate ? (
           <m.span
             aria-hidden
             className="absolute inset-[-10px] rounded-full"
@@ -286,7 +292,7 @@ export function Orbit({
           }}
         >
           <ReactLogo className="h-8 w-8 sm:h-10 sm:w-10" title="React" />
-          {!reduceMotion ? (
+          {canAnimate ? (
             <m.span
               aria-hidden
               className="pointer-events-none absolute inset-0 rounded-full"

@@ -27,7 +27,7 @@ export const profile: TProfile = {
     "To become a globally recognized technology partner delivering innovative software solutions and AI-powered automation that transform the way businesses operate.",
   experienceLabel: "HOLASVISION studio & freelance practice",
   educationLabel: "Software Engineering",
-  avatarSrc: "/images/profile.webp",
+  avatarSrc: "/images/profile.png",
   avatarAlt: "Akinola Olayemi Ayodeji, founder of HOLASVISION",
   resumePath: "/resume.pdf",
   resumeDownloadName: "Akinola_Olayemi_Ayodeji_Resume.pdf",

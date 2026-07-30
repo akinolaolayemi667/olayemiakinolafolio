@@ -10,15 +10,15 @@ import {
  */
 export const expertiseHubSection: TExpertiseHubSection = {
   eyebrow: "Engineering Expertise",
-  title: "The stack behind full stack, AI agents, and SaaS delivery",
+  title: "Architecture map for full stack platforms, AI agents, and SaaS delivery",
   description:
-    "Select a technology to see how HOLASVISION uses it for product engineering, AI automation, and production infrastructure.",
+    "Select a node to inspect how HOLASVISION composes interface, intelligence, and platform layers into production-ready system architecture.",
   centerLabel: "React",
-  whatIBuildLabel: "What we build",
-  businessValueLabel: "Business value",
+  whatIBuildLabel: "Architecture scope",
+  businessValueLabel: "Operational impact",
   capabilitiesLabel: "Capabilities",
-  toolsLabel: "Technologies",
-  outcomesLabel: "Outcomes",
+  toolsLabel: "Implementation stack",
+  outcomesLabel: "System outcomes",
   ctaLabel: "Start a project",
   ctaHref: "#contact",
 };

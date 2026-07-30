@@ -16,6 +16,7 @@ import { TExpertiseOrbitNode } from "@type/Content";
 import { Orbit } from "./Orbit";
 import { ExpertisePanel } from "./ExpertisePanel";
 import { SectionBridge } from "@components/ui/SectionBridge";
+import { DataFlowOverlay } from "./DataFlowOverlay";
 
 /**
  * Technology Ecosystem — interactive three-ring showcase.
@@ -24,7 +25,12 @@ import { SectionBridge } from "@components/ui/SectionBridge";
 export default function ExpertiseHub() {
   const reduceMotion = Boolean(useReducedMotion());
   const searchParams = useSearchParams();
+  const layoutRef = useRef<HTMLDivElement>(null);
   const orbitBoxRef = useRef<HTMLDivElement>(null);
+  const orbitAnchorRef = useRef<HTMLDivElement>(null);
+  const cardFrontendRef = useRef<HTMLElement>(null);
+  const cardAiRef = useRef<HTMLElement>(null);
+  const cardPlatformRef = useRef<HTMLElement>(null);
   const [orbitSize, setOrbitSize] = useState(390);
   const [activeNodeId, setActiveNodeId] = useState<string | null>(
     expertiseOrbitNodes[0]?.id ?? null
@@ -36,6 +42,16 @@ export default function ExpertiseHub() {
     null
   );
   const [urlSynced, setUrlSynced] = useState(false);
+  const [motionEnabled, setMotionEnabled] = useState(!reduceMotion);
+  const [rotationDuration, setRotationDuration] = useState(14);
+  const architectureCardRefs = useMemo(
+    () => ({
+      frontend: cardFrontendRef,
+      ai: cardAiRef,
+      platform: cardPlatformRef,
+    }),
+    []
+  );
 
   const syncUrl = useCallback((nextCategoryId: string, nextNodeId?: string | null) => {
     if (typeof window === "undefined") return;
@@ -84,6 +100,12 @@ export default function ExpertiseHub() {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (reduceMotion) {
+      setMotionEnabled(false);
+    }
+  }, [reduceMotion]);
 
   const activeNode = useMemo(
     () => expertiseOrbitNodes.find((node) => node.id === activeNodeId) ?? null,
@@ -142,25 +164,90 @@ export default function ExpertiseHub() {
           description={expertiseHubSection.description}
         />
 
-        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12 xl:gap-16">
-          <div className="flex justify-center lg:justify-start">
-            <div
-              ref={orbitBoxRef}
-              className="aspect-square w-[310px] shrink-0 sm:w-[390px] lg:w-[460px] xl:w-[520px]"
-            >
-              <Orbit
-                nodes={expertiseOrbitNodes}
-                activeNodeId={activeNodeId}
-                highlightNodeId={previewNode?.id ?? activeNodeId}
-                reduceMotion={reduceMotion}
-                onSelect={selectNode}
-                onPreview={onPreview}
-                size={orbitSize}
-              />
+        <div
+          ref={layoutRef}
+          className="relative mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12 xl:gap-16"
+        >
+          <DataFlowOverlay
+            containerRef={layoutRef}
+            orbitRef={orbitAnchorRef}
+            cardRefs={architectureCardRefs}
+            activeCategoryId={displayedCategoryId}
+            motionEnabled={motionEnabled}
+            reduceMotion={reduceMotion}
+          />
+          <div className="space-y-5">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <button
+                type="button"
+                onClick={() => setMotionEnabled((prev) => !prev)}
+                className={`rounded-xl border px-3 py-2 text-xs font-medium transition-colors sm:text-sm ${
+                  motionEnabled
+                    ? "border-accent/40 bg-accent/12 text-white"
+                    : "border-white/12 bg-ink/45 text-white/70 hover:border-accent/30 hover:text-white"
+                }`}
+              >
+                {motionEnabled ? "Pause orbit motion" : "Resume orbit motion"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setRotationDuration(10)}
+                className={`rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${
+                  rotationDuration === 10
+                    ? "border-accent/40 bg-accent/10 text-accent"
+                    : "border-white/10 text-white/65 hover:border-accent/30 hover:text-white"
+                }`}
+              >
+                Fast
+              </button>
+              <button
+                type="button"
+                onClick={() => setRotationDuration(14)}
+                className={`rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${
+                  rotationDuration === 14
+                    ? "border-accent/40 bg-accent/10 text-accent"
+                    : "border-white/10 text-white/65 hover:border-accent/30 hover:text-white"
+                }`}
+              >
+                Balanced
+              </button>
+              <button
+                type="button"
+                onClick={() => setRotationDuration(20)}
+                className={`rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${
+                  rotationDuration === 20
+                    ? "border-accent/40 bg-accent/10 text-accent"
+                    : "border-white/10 text-white/65 hover:border-accent/30 hover:text-white"
+                }`}
+              >
+                Slow
+              </button>
+            </div>
+
+            <div className="flex justify-center lg:justify-start">
+              <div ref={orbitAnchorRef} className="relative z-10">
+                <div
+                  ref={orbitBoxRef}
+                  className="aspect-square w-[310px] shrink-0 sm:w-[390px] lg:w-[460px] xl:w-[520px]"
+                >
+                  <Orbit
+                    nodes={expertiseOrbitNodes}
+                    activeNodeId={activeNodeId}
+                    highlightNodeId={previewNode?.id ?? activeNodeId}
+                    reduceMotion={reduceMotion}
+                    motionEnabled={motionEnabled}
+                    rotationDuration={rotationDuration}
+                    onSelect={selectNode}
+                    onPreview={onPreview}
+                    size={orbitSize}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="min-w-0">
+          <div className="relative z-10 min-w-0">
             <ExpertisePanel
               category={category}
               activeTechLabel={displayedTechLabel}
@@ -182,6 +269,70 @@ export default function ExpertiseHub() {
                 Browse all projects
               </Link>
             </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {expertiseHubCategories.map((item) => (
+                <article
+                  key={`architecture-${item.id}`}
+                  ref={
+                    item.id === "frontend"
+                      ? cardFrontendRef
+                      : item.id === "ai"
+                        ? cardAiRef
+                        : cardPlatformRef
+                  }
+                  className={`rounded-xl border p-3.5 backdrop-blur-md ${
+                    displayedCategoryId === item.id
+                      ? "border-accent/40 bg-accent/[0.08] shadow-[0_0_22px_rgba(20,184,166,0.16)]"
+                      : "border-white/10 bg-white/[0.02]"
+                  }`}
+                >
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/45">
+                    Architecture Blueprint
+                  </p>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-accent">
+                    {item.title}
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-white/70">
+                    {item.capabilities.slice(0, 2).join(" + ")}
+                  </p>
+                  <p className="mt-2 text-[11px] text-white/50">
+                    {item.technologies.slice(0, 2).join(" / ")}
+                  </p>
+                  <div className="mt-3 flex items-center gap-1.5">
+                    <span className="rounded-md border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-white/60">
+                      Ingress
+                    </span>
+                    <span className="rounded-md border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-white/60">
+                      Processing
+                    </span>
+                    <span className="rounded-md border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-white/60">
+                      Delivery
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-white/12 bg-white/[0.025] p-4 backdrop-blur-md">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
+                Architecture Principles
+              </p>
+              <ul className="mt-3 grid gap-2 text-xs text-white/70 sm:grid-cols-2">
+                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                  Domain-first boundaries with typed contracts between layers
+                </li>
+                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                  Event-ready flows for automation, observability, and retries
+                </li>
+                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                  Progressive enhancement from MVP to production architecture
+                </li>
+                <li className="rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+                  Security-aware defaults across auth, data, and delivery paths
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </Container>
