@@ -5,8 +5,19 @@ import { AnimatePresence, m } from "framer-motion";
 import { TypeSequence } from "@components/ui/TypeSequence";
 import { StatusChip } from "@components/ui/StatusChip";
 import { SectionBridge } from "@components/ui/SectionBridge";
+import {
+  ArchitectureCard,
+  FeatureCard,
+  MetricCard,
+  TechBadge,
+} from "@components/premium";
 import { profile } from "@data/profile";
-import { engineeringIntelligenceSection } from "@data/engineering-intelligence";
+import {
+  engineeringIntelligenceSection,
+  expertiseDeliveryFlow,
+  expertiseMetrics,
+  expertisePrinciples,
+} from "@data/engineering-intelligence";
 import { easeOutPremium, motionDuration } from "@lib/motion";
 
 type Props = {
@@ -17,7 +28,7 @@ type Props = {
 type Phase = "idle" | "typing" | "checklist" | "report";
 
 /**
- * Editorial profile panel — brief load sequence, then clean company overview.
+ * Premium architecture expertise panel — metrics, delivery flow, and capability modules.
  */
 export function IntelligencePanel({ reduceMotion, active }: Props) {
   const copy = engineeringIntelligenceSection;
@@ -55,20 +66,19 @@ export function IntelligencePanel({ reduceMotion, active }: Props) {
     phase === "report" ? copy.statusReady : copy.statusAnalyzing;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface/70 p-5 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset,0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-md sm:p-7 md:p-8">
+    <div className="relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-[color:var(--hv-glass-bg)] p-5 shadow-[var(--hv-shadow-lg)] backdrop-blur-[var(--hv-glass-blur)] sm:p-7 md:p-8">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 65% 50% at 100% 0%, rgba(20,184,166,0.07), transparent 55%)",
-        }}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_100%_0%,rgba(20,184,166,0.1),transparent_55%)]"
       />
 
       <div className="relative z-10 flex flex-col gap-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="text-sm font-medium text-white">{profile.name}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+              Architecture Command
+            </p>
+            <p className="mt-1 text-sm font-medium text-white">{profile.name}</p>
             <p className="mt-1 text-sm text-muted">{profile.brand}</p>
           </div>
           <StatusChip
@@ -137,7 +147,7 @@ export function IntelligencePanel({ reduceMotion, active }: Props) {
                 duration: reduceMotion ? 0.01 : motionDuration.base,
                 ease: easeOutPremium,
               }}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-6"
             >
               <div>
                 <h3 className="text-xl font-semibold tracking-tight text-white md:text-2xl">
@@ -146,38 +156,70 @@ export function IntelligencePanel({ reduceMotion, active }: Props) {
                 <p className="mt-1.5 text-sm text-muted">{profile.location}</p>
               </div>
 
-              {copy.modules.map((module, index) => (
-                <m.article
-                  key={module.id}
-                  initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: reduceMotion ? 0 : 0.05 + index * 0.05,
-                    duration: motionDuration.base,
-                    ease: easeOutPremium,
-                  }}
-                  className="border-t border-white/8 pt-4 first:border-t-0 first:pt-0"
-                >
-                  <p className="text-xs font-medium tracking-wide text-accent">
-                    {module.label}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/75 md:text-[0.95rem]">
-                    {module.body}
-                  </p>
-                  {module.items?.length ? (
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {module.items.map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-white/65"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </m.article>
-              ))}
+              <div className="grid grid-cols-2 gap-3">
+                {expertiseMetrics.map((metric) => (
+                  <MetricCard
+                    key={metric.label}
+                    label={metric.label}
+                    value={metric.value}
+                    hint={metric.hint}
+                  />
+                ))}
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+                  Delivery architecture flow
+                </p>
+                {expertiseDeliveryFlow.map((item, index) => (
+                  <ArchitectureCard
+                    key={item.step}
+                    step={item.step}
+                    title={item.title}
+                    description={item.description}
+                    showConnector={index < expertiseDeliveryFlow.length - 1}
+                  />
+                ))}
+              </div>
+
+              <div className="grid gap-4">
+                {copy.modules.map((module, index) => (
+                  <FeatureCard
+                    key={module.id}
+                    id={module.id}
+                    title={module.label}
+                    description={module.body}
+                    gradientBorder={index === 0}
+                    meta={
+                      module.items?.length ? (
+                        <ul className="flex flex-wrap gap-2">
+                          {module.items.map((item) => (
+                            <li key={item}>
+                              <TechBadge label={item} size="sm" />
+                            </li>
+                          ))}
+                        </ul>
+                      ) : undefined
+                    }
+                  />
+                ))}
+              </div>
+
+              <article className="rounded-2xl border border-white/10 bg-white/[0.025] p-4 backdrop-blur-md">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
+                  Architecture principles
+                </p>
+                <ul className="mt-3 grid gap-2 text-xs text-white/70 sm:grid-cols-2">
+                  {expertisePrinciples.map((principle) => (
+                    <li
+                      key={principle}
+                      className="rounded-lg border border-white/10 bg-black/20 px-3 py-2"
+                    >
+                      {principle}
+                    </li>
+                  ))}
+                </ul>
+              </article>
 
               <SectionBridge
                 className="pt-2"

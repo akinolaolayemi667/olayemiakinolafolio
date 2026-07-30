@@ -169,16 +169,7 @@ export function CaseStudyPreview({ project, index = 0 }: Props) {
                     <ExternalIcon />
                     {demo.label ?? projectsSection.sectionLabels.liveDemo}
                   </PrimaryButton>
-                ) : (
-                  <span
-                    className="hv-btn hv-btn-secondary pointer-events-none inline-flex items-center gap-1.5 opacity-50"
-                    aria-disabled="true"
-                    title={projectPendingCopy.mediaTitle}
-                  >
-                    <ExternalIcon />
-                    {projectsSection.sectionLabels.liveDemo}
-                  </span>
-                )}
+                ) : null}
 
                 {showRepo && project.repository.url ? (
                   <PrimaryButton

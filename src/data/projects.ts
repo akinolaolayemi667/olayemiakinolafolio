@@ -137,10 +137,7 @@ export const projects: TPortfolioProject[] = [
       "Keeps contact conversion and SEO foundations ready — Formspree, sitemap, robots, and structured data",
     ],
     gallery: [],
-    liveDemo: {
-      url: "https://holasvision.netlify.app",
-      label: "View live site",
-    },
+    liveDemo: null,
     repository: {
       url: null,
       visibility: "private",
@@ -247,7 +244,10 @@ export const projects: TPortfolioProject[] = [
         alt: "AAOsrc title detail page — poster, metadata, synopsis, and Watch Now actions for The Odyssey",
       },
     ],
-    liveDemo: null,
+    liveDemo: {
+      url: "https://aaosrc-aao.vercel.app/",
+      label: "View live site",
+    },
     repository: {
       url: "https://github.com/akinolaolayemi667/aaosrc",
       visibility: "public",
@@ -311,6 +311,7 @@ export const projects: TPortfolioProject[] = [
           "Cloudflare Workers — `wrangler.jsonc` targets `@tanstack/react-start/server-entry` with `nodejs_compat`",
           "Build output: `dist/client` (static assets) + `dist/server` (SSR worker)",
           "Supabase migration SQL for `watchlist` table and RLS policies under `supabase/migrations/`",
+          "Production deployment at https://aaosrc-aao.vercel.app/",
           "Public GitHub repository: github.com/akinolaolayemi667/aaosrc",
           "Stateless SSR handlers — horizontal scale via Vercel functions or Cloudflare Workers",
           "TMDB catalog fetched on demand per route loader; Supabase handles auth and watchlist with indexed `user_id`",
@@ -331,7 +332,7 @@ export const projects: TPortfolioProject[] = [
         id: "future-improvements",
         title: "Future improvements",
         items: [
-          "Publish a verified production URL once deployment is confirmed (not present in repository)",
+          "Add custom domain mapping when the client is ready to move off the Vercel preview URL",
           "Wire Google OAuth UI — `signInWithGoogle` exists in auth context but is not exposed on the login page",
           "Add `@tanstack/react-query` caching layer (listed in dependencies but not yet used in source)",
           "Replace TMDB public mirror with a first-party server proxy when API key management is finalized",
@@ -425,7 +426,7 @@ export const projects: TPortfolioProject[] = [
     solution:
       "A Next.js App Router executive site with typed content modules as the single source of truth. The flagship Executive Achievement Portfolio presents thirteen navigable sections — positioning, case studies, business impact, philosophy, governance, financial and military leadership, honors, gallery, downloads, and contact — with sticky section navigation and print-optimized CSS. Supporting routes cover timeline, board service, impact dashboard, thought leadership, resume, and contact. Client-side enhancements include dark/light theming, a command palette (Ctrl+K), accessibility controls, and dynamically loaded motion features — without a backend or CMS.",
     architecture:
-      "Next.js 16 App Router with React 19 and TypeScript. Content lives in `src/content/*` modules (executive profile, portfolio sections, navigation, case studies, metrics). UI uses Tailwind CSS 4, Radix UI primitives, class-variance-authority, and Framer Motion for entrance animations. `next-themes` drives dark/light mode; heavy client features (command palette, accessibility panel, loading screen, QR code) load via `next/dynamic`. Metadata, Open Graph, Twitter cards, Person JSON-LD, breadcrumb schema, sitemap, and robots are generated from shared helpers. Contact inquiries use a client-side mailto workflow — no server API or database. Security headers (nosniff, frame deny, referrer policy) are set in `next.config.ts`. Production is served at henrylandrewsjr.com.",
+      "Next.js 16 App Router with React 19 and TypeScript. Content lives in `src/content/*` modules (executive profile, portfolio sections, navigation, case studies, metrics). UI uses Tailwind CSS 4, Radix UI primitives, class-variance-authority, and Framer Motion for entrance animations. `next-themes` drives dark/light mode; heavy client features (command palette, accessibility panel, loading screen, QR code) load via `next/dynamic`. Metadata, Open Graph, Twitter cards, Person JSON-LD, breadcrumb schema, sitemap, and robots are generated from shared helpers. Contact inquiries use a client-side mailto workflow — no server API or database. Security headers (nosniff, frame deny, referrer policy) are set in `next.config.ts`. Production is deployed on Vercel at henrylandrewsjr-rhfe.vercel.app.",
     responsibilities: [
       "End-to-end frontend architecture and UX for the executive portfolio system",
       "Content modeling across biography, achievement portfolio, case studies, and dashboard surfaces",
@@ -467,7 +468,7 @@ export const projects: TPortfolioProject[] = [
     ],
     results: [],
     businessImpact: [
-      "Gives the client a credible, recruiter-navigable executive brand surface at henrylandrewsjr.com",
+      "Gives the client a credible, recruiter-navigable executive brand surface on the deployed Vercel site",
       "Consolidates complex military, corporate, and governance narrative into one premium destination",
       "Print export supports offline board review without separate document assembly",
       "Structured metadata and JSON-LD improve discoverability for executive and board-related search",
@@ -480,7 +481,7 @@ export const projects: TPortfolioProject[] = [
       },
     ],
     liveDemo: {
-      url: "https://henrylandrewsjr.com",
+      url: "https://henrylandrewsjr-rhfe.vercel.app/",
       label: "View live site",
     },
     repository: {
@@ -540,7 +541,7 @@ export const projects: TPortfolioProject[] = [
         id: "deployment",
         title: "Deployment",
         items: [
-          "Production site at https://henrylandrewsjr.com",
+          "Production site at https://henrylandrewsjr-rhfe.vercel.app/",
           "Standard Next.js build pipeline (npm run build) — App Router without static export",
           "Long-cache headers for /images/* assets via next.config headers()",
           "Public GitHub repository for source review",

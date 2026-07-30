@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Container } from "@components/ui/Container";
 import { SectionHeading } from "@components/ui/SectionHeading";
+import { FloatingGrid } from "@components/premium/FloatingGrid";
 import { engineeringIntelligenceSection } from "@data/engineering-intelligence";
-import { PortraitScan } from "./PortraitScan";
+import { FounderArchitectureVisual } from "./FounderArchitectureVisual";
 import { IntelligencePanel } from "./IntelligencePanel";
 
 /**
- * About / Engineering Intelligence — company introduction with portrait scan.
+ * Engineering Intelligence — premium architecture expertise introduction.
  */
 export default function EngineeringIntelligence() {
   const reduceMotion = Boolean(useReducedMotion());
@@ -43,6 +44,8 @@ export default function EngineeringIntelligence() {
       className="hv-section-band cv-auto relative overflow-hidden border-y border-[color:var(--hv-border)]"
       aria-labelledby="engineering-intelligence-heading"
     >
+      <FloatingGrid opacity={0.05} cellSize={72} />
+
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -60,12 +63,8 @@ export default function EngineeringIntelligence() {
           description={copy.description}
         />
 
-        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
-          <PortraitScan
-            badges={copy.badges}
-            reduceMotion={reduceMotion}
-            active={active}
-          />
+        <div className="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12 xl:gap-16">
+          <FounderArchitectureVisual active={active} />
           <IntelligencePanel reduceMotion={reduceMotion} active={active} />
         </div>
       </Container>
