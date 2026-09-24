@@ -238,9 +238,9 @@ export function buildOrganizationSchema(): JsonLd {
     "@id": orgId(),
     name: profile.brand,
     url: absoluteUrl("/"),
-    logo: imageObject(profile.avatarSrc, {
+    logo: imageObject(profile.logoSrc, {
       name: `${profile.brand} mark`,
-      caption: profile.avatarAlt,
+      caption: profile.logoAlt,
     }),
     image: imageObject(seo.ogImage, {
       width: seo.ogImageWidth,

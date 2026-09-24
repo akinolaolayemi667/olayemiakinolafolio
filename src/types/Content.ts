@@ -53,6 +53,9 @@ export type TProfile = {
   educationLabel: string;
   avatarSrc: string;
   avatarAlt: string;
+  /** Site logo lockup (nav / hero / footer) — typically GitHub profile mark. */
+  logoSrc: string;
+  logoAlt: string;
   resumePath: string;
   resumeDownloadName: string;
   availability: string;

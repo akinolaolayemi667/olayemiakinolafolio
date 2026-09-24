@@ -29,6 +29,8 @@ export const profile: TProfile = {
   educationLabel: "Software Engineering",
   avatarSrc: "/images/profile.png",
   avatarAlt: "Akinola Olayemi Ayodeji, founder of HOLASVISION",
+  logoSrc: "/images/logo.png",
+  logoAlt: "HOLASVISION logo",
   resumePath: "/resume.pdf",
   resumeDownloadName: "Akinola_Olayemi_Ayodeji_Resume.pdf",
   availability:
