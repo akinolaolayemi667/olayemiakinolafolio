@@ -1,13 +1,25 @@
+import dynamic from "next/dynamic";
 import BiographySection from "@components/About/BiographySection";
 import CareerHighlights from "@components/About/CareerHighlights";
 import CertificationSection from "@components/About/CertificationSection";
 import EducationSection from "@components/About/EducationSection";
 import ExperienceSection from "@components/About/ExperienceSection";
 import SkillSection from "@components/About/SkillSection";
+import AnswerEngineSummary from "@components/Home/AnswerEngineSummary";
 import { Container } from "@components/ui/Container";
+import { MotionProvider } from "@components/ui/MotionProvider";
+
+const EngineeringIntelligence = dynamic(
+  () => import("@components/intelligence/EngineeringIntelligence"),
+  {
+    loading: () => (
+      <div className="hv-skeleton mx-auto min-h-[32rem] w-full" aria-hidden />
+    ),
+  }
+);
 
 /**
- * About page — storytelling experience with premium section rhythm.
+ * About page — founder story, expertise intro, skills, and credentials.
  */
 export default function AboutPage() {
   return (
@@ -22,6 +34,12 @@ export default function AboutPage() {
           <BiographySection />
         </Container>
       </section>
+
+      <AnswerEngineSummary />
+
+      <MotionProvider>
+        <EngineeringIntelligence />
+      </MotionProvider>
 
       {/* Career highlights */}
       <section className="hv-section-band relative overflow-hidden border-y border-[color:var(--hv-border)] bg-[color:var(--hv-surface)]/30">

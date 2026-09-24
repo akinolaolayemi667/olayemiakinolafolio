@@ -5,7 +5,7 @@ import { profile } from "@data/profile";
 
 /**
  * Answer-engine friendly summary — labeled blocks for citation.
- * Company voice on Home; detailed first-person narrative on /about.
+ * Lives on /about with the founder narrative.
  */
 export default function AnswerEngineSummary() {
   return (
@@ -52,10 +52,10 @@ export default function AnswerEngineSummary() {
 
           <p className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
             <Link
-              href="/about"
+              href="#engineering-intelligence"
               className="hv-link font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
-              Full profile
+              Expertise overview
             </Link>
             <Link
               href="/projects"

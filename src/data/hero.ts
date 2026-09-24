@@ -9,8 +9,8 @@ export const hero: THeroContent = {
     "HOLASVISION designs and ships SaaS products, AI agents, workflow automation, API integrations, and Chrome extensions — from first interface to production.",
   primaryCta: "Start a project",
   primaryHref: "/connect",
-  secondaryCta: "Explore expertise",
-  secondaryHref: "#engineering-intelligence",
+  secondaryCta: "About HOLASVISION",
+  secondaryHref: "/about",
   socialProof:
     "Studio delivery for SaaS, AI agents, and production software — remote worldwide.",
   trustPoints: [

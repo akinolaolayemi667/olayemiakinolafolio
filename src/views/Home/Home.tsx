@@ -1,13 +1,8 @@
 import dynamic from "next/dynamic";
 import HomeHero from "@components/Home/HomeHero";
-import AnswerEngineSummary from "@components/Home/AnswerEngineSummary";
 import { MotionProvider } from "@components/ui/MotionProvider";
 
 /** Below-fold interactive sections — separate chunks. */
-const EngineeringIntelligence = dynamic(
-  () => import("@components/intelligence/EngineeringIntelligence"),
-  { loading: () => <SectionPlaceholder minHeight="32rem" /> }
-);
 const ExpertiseHub = dynamic(
   () => import("@components/expertise/ExpertiseHub"),
   { loading: () => <SectionPlaceholder minHeight="32rem" /> }
@@ -52,17 +47,15 @@ function SectionPlaceholder({ minHeight = "12rem" }: { minHeight?: string }) {
 }
 
 /**
- * HOLASVISION homepage — premium engineering portfolio shell.
+ * HOLASVISION homepage — conversion + proof. Founder About lives on /about.
  */
 export default function HomePage() {
   return (
     <div className="hv-page-shell">
       <HomeHero />
-      <AnswerEngineSummary />
       <MotionProvider>
-        <EngineeringIntelligence />
-        <ExpertiseHub />
         <FeaturedProjects />
+        <ExpertiseHub />
         <Services />
         <Process />
         <EngineeringTimeline />

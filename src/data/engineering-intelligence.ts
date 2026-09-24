@@ -2,7 +2,7 @@ import { TEngineeringIntelligenceSection } from "@type/Content";
 import { profile } from "./profile";
 
 /**
- * Engineering Intelligence — founder/company introduction (Home).
+ * Engineering Intelligence — founder/company introduction (About page).
  * Calibrated for product-company tone, not resume or sci-fi HUD.
  */
 export const engineeringIntelligenceSection: TEngineeringIntelligenceSection = {
@@ -16,7 +16,7 @@ export const engineeringIntelligenceSection: TEngineeringIntelligenceSection = {
   conclusion:
     "Next, explore the technology stack behind HOLASVISION delivery.",
   ctaLabel: "Explore the technology stack",
-  ctaHref: "#technology-ecosystem",
+  ctaHref: "/#technology-ecosystem",
   badges: [
     { id: "verified", label: "Verified expertise", tone: "accent" },
     { id: "remote", label: "Remote worldwide", tone: "neutral" },
