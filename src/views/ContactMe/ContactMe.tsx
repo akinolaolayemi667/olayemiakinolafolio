@@ -1,6 +1,7 @@
 import { contact } from "@data/contact";
 import { ContactForm } from "@components/ui/ContactForm";
 import { Container } from "@components/ui/Container";
+import { PrimaryButton } from "@components/ui/PrimaryButton";
 import { publishedSocialLinks } from "@data/socials";
 import { EngagementStrip } from "@components/brand/EngagementStrip";
 import Image from "next/image";
@@ -42,6 +43,21 @@ export default function ContactMePage() {
                 {contact.pageHeading}
               </h2>
               <p className="hv-body-lg mt-4 max-w-md">{contact.description}</p>
+
+              {contact.bookingHref.trim() ? (
+                <div className="mt-6 flex flex-col gap-2">
+                  <PrimaryButton
+                    href={contact.bookingHref}
+                    glow
+                    ariaLabel={contact.bookingLabel}
+                  >
+                    {contact.bookingLabel}
+                  </PrimaryButton>
+                  <p className="text-sm text-[color:var(--hv-fg-muted)]">
+                    {contact.bookingHint}
+                  </p>
+                </div>
+              ) : null}
 
               {profileSocials.length > 0 ? (
                 <ul className="mt-6 flex list-none flex-row gap-2 p-0">

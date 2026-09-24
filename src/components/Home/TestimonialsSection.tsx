@@ -93,7 +93,11 @@ function TestimonialCard({ item }: { item: TTestimonial }) {
             {item.company ? ` · ${item.company}` : ""}
           </p>
         </div>
-        {item.isPlaceholder ? null : (
+        {item.isPlaceholder ? (
+          <span className="ml-auto hidden shrink-0 rounded-md border border-[color:var(--hv-border)] bg-[color:var(--hv-surface)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--hv-fg-muted)] sm:inline-flex">
+            Partner feedback
+          </span>
+        ) : (
           <span className="ml-auto hidden shrink-0 rounded-md border border-accent/25 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-accent sm:inline-flex">
             {testimonialsSection.placeholderBadge}
           </span>

@@ -215,10 +215,14 @@ export type TContactContent = {
   title: string;
   description: string;
   formspreeEndpoint: string;
-  /** Scroll/focus target until a real scheduler URL exists */
+  /** Scroll/focus target for the form CTA */
   primaryCtaHref: string;
   primaryCtaLabel: string;
   primaryCtaHint: string;
+  /** Discovery-call booking URL (Calendly, Cal.com, or WhatsApp) */
+  bookingHref: string;
+  bookingLabel: string;
+  bookingHint: string;
   emailPlaceholder: string;
   namePlaceholder: string;
   companyPlaceholder: string;

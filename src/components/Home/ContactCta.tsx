@@ -222,12 +222,29 @@ export default function ContactCta() {
                   {contact.description}
                 </p>
 
-                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center">
-                  <PrimaryButton href={contact.primaryCtaHref} glow>
-                    {contact.primaryCtaLabel}
-                  </PrimaryButton>
+                <div className="flex flex-col gap-3 pt-1">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                    {contact.bookingHref.trim() ? (
+                      <PrimaryButton
+                        href={contact.bookingHref}
+                        glow
+                        ariaLabel={contact.bookingLabel}
+                      >
+                        {contact.bookingLabel}
+                      </PrimaryButton>
+                    ) : null}
+                    <PrimaryButton
+                      href={contact.primaryCtaHref}
+                      variant={contact.bookingHref.trim() ? "secondary" : "primary"}
+                      glow={!contact.bookingHref.trim()}
+                    >
+                      {contact.primaryCtaLabel}
+                    </PrimaryButton>
+                  </div>
                   <p className="text-sm text-[color:var(--hv-fg-muted)]">
-                    {contact.primaryCtaHint}
+                    {contact.bookingHref.trim()
+                      ? contact.bookingHint
+                      : contact.primaryCtaHint}
                   </p>
                 </div>
 

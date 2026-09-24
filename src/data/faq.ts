@@ -29,7 +29,7 @@ export const faqItems: TFaqItem[] = [
   {
     question: "What’s the fastest way to get started?",
     answer:
-      "Book a discovery call or send a short project brief via the contact form. You’ll get an honest fit assessment, next steps, and a recommended engagement shape — usually within 1–2 business days.",
+      "Book a discovery call on WhatsApp from the contact section, or send a short project brief via the form. You’ll get an honest fit assessment, next steps, and a recommended engagement shape — usually within 1–2 business days.",
   },
   {
     question: "Who do you typically work with?",

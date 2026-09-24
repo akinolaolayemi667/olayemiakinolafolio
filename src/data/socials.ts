@@ -12,7 +12,7 @@ export const socialLinks: TSocialLink[] = [
   },
   {
     id: "linkedin",
-    url: "",
+    url: "https://www.linkedin.com/in/akinola-olayemi-1b952a3a9",
     label: "LinkedIn",
   },
   {

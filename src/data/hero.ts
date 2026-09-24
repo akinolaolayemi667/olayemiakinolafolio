@@ -1,5 +1,4 @@
 import { THeroContent } from "@type/Content";
-import { profile } from "./profile";
 
 /**
  * Homepage hero — company-grade, conversion-focused.
@@ -12,7 +11,8 @@ export const hero: THeroContent = {
   primaryHref: "/connect",
   secondaryCta: "Explore expertise",
   secondaryHref: "#engineering-intelligence",
-  socialProof: profile.brandLead,
+  socialProof:
+    "Studio delivery for SaaS, AI agents, and production software — remote worldwide.",
   trustPoints: [
     "Full stack product engineering",
     "AI automation & agents",

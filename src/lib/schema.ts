@@ -466,9 +466,11 @@ export function buildContactPageGraph(): JsonLd {
       url: absoluteUrl("/connect"),
       availableLanguage: ["English"],
       areaServed: seo.serviceArea,
-      significantLink: contact.primaryCtaHref.startsWith("http")
-        ? contact.primaryCtaHref
-        : absoluteUrl("/#contact"),
+      significantLink: contact.bookingHref.trim()
+        ? contact.bookingHref
+        : contact.primaryCtaHref.startsWith("http")
+          ? contact.primaryCtaHref
+          : absoluteUrl("/#contact"),
     },
   ]);
 }

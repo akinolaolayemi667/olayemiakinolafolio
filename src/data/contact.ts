@@ -1,9 +1,16 @@
 import { TContactContent } from "@type/Content";
 import { getSocial } from "./socials";
 
+const phone = getSocial("phone");
+const bookingDigits = phone.url.replace(/\D/g, "");
+const bookingMessage = encodeURIComponent(
+  "Hi Akinola — I'd like to book a discovery call about a HOLASVISION project."
+);
+
 /**
  * Final conversion CTA (Home) + /connect form fields.
  * Formspree endpoint is public-by-design.
+ * Booking uses WhatsApp until a Calendly/Cal.com URL is published.
  */
 export const contact: TContactContent = {
   eyebrow: "Contact",
@@ -13,7 +20,10 @@ export const contact: TContactContent = {
   formspreeEndpoint: "https://formspree.io/f/xwplpbrq",
   primaryCtaHref: "#contact-form",
   primaryCtaLabel: "Send a message",
-  primaryCtaHint: "Prefer email or a call? Reach out directly below.",
+  primaryCtaHint: "Prefer a call first? Book a discovery chat below.",
+  bookingHref: `https://wa.me/${bookingDigits}?text=${bookingMessage}`,
+  bookingLabel: "Book a discovery call",
+  bookingHint: "15–20 min WhatsApp chat — usually within 1–2 business days.",
   emailPlaceholder: "you@company.com",
   namePlaceholder: "Your name",
   companyPlaceholder: "Company",
@@ -29,7 +39,7 @@ export const contact: TContactContent = {
     "Something went wrong sending your message. Please try again or email us directly.",
   emailCtaHref: getSocial("email").url,
   emailCtaText: "akinolaolayemi667@gmail.com",
-  phoneCtaHref: getSocial("phone").url,
+  phoneCtaHref: phone.url,
   phoneCtaText: "Dial 07042299786",
   phoneDisplay: "07042299786",
   pageTitle: "Contact",
