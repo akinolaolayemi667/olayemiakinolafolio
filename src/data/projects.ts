@@ -150,7 +150,7 @@ export const projects: TPortfolioProject[] = [
     gallery: [
       {
         src: "/images/projects/voiceofgod-home.jpg",
-        alt: "Voice of God Accessories wholesale showcase — materials and accessories photography",
+        alt: "Voice of God Accessories homepage — hero with premium materials headline, Shop Products and Explore Wholesale CTAs, and featured lifestyle portrait",
       },
       {
         src: "/images/projects/voiceofgod-wholesale.png",
