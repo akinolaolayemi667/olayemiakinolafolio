@@ -95,7 +95,7 @@ export const projects: TPortfolioProject[] = [
     industry: "Professional services",
     clientType: "HOLASVISION (own product)",
     summary:
-      "The public HOLASVISION portfolio: a static Next.js site that presents the practice, selected work, and contact paths. Built for performance, accessibility, and honest case-study publishing — including empty slots until real screenshots and outcomes are ready.",
+      "The public HOLASVISION portfolio — first flagship product surface for the practice: a static Next.js site that presents the brand, selected work, and contact paths. Built for performance, accessibility, and honest case-study publishing — including empty slots until real screenshots and outcomes are ready.",
     problem:
       "The practice needed a production-ready public surface that could ship case studies without inventing metrics, keep contact conversion clear, and stay fast on static hosting.",
     goals: [
@@ -137,11 +137,14 @@ export const projects: TPortfolioProject[] = [
       "Keeps contact conversion and SEO foundations ready — Formspree, sitemap, robots, and structured data",
     ],
     gallery: [],
-    liveDemo: null,
+    liveDemo: {
+      url: "https://holasvision.netlify.app",
+      label: "Live site",
+    },
     repository: {
-      url: null,
-      visibility: "private",
-      label: "Private repository",
+      url: "https://github.com/akinolaolayemi667/olayemiakinolafolio",
+      visibility: "public",
+      label: "View on GitHub",
     },
     projectStatus: "in-production",
     year: 2026,
