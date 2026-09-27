@@ -140,9 +140,14 @@ export const projects: TPortfolioProject[] = [
       "Shows a full AI operating workspace buyers can open and click through",
       "Demonstrates CRM, automation, and analytics in one product story",
     ],
-    gallery: [],
+    gallery: [
+      {
+        src: "/images/projects/nexora-ai-home.jpg",
+        alt: "NEXORA AI homepage — Run Your Business With Intelligence Built In, with the product workspace preview",
+      },
+    ],
     liveDemo: {
-      url: "https://nexoraai-inky.vercel.app",
+      url: "https://nexoraainexo.vercel.app",
       label: "Live product",
     },
     repository: {
@@ -221,9 +226,14 @@ export const projects: TPortfolioProject[] = [
       "Gives AI and CRM automation its own public offer page",
       "Lets a prospect understand services, industries, and process before they book",
     ],
-    gallery: [],
+    gallery: [
+      {
+        src: "/images/projects/aiflow-home.jpg",
+        alt: "AIFlow homepage — Automate Your Business. Scale With AI., with the automation system preview",
+      },
+    ],
     liveDemo: {
-      url: "https://aiflow-taupe.vercel.app",
+      url: "https://aiflowai.vercel.app",
       label: "Live site",
     },
     repository: {
@@ -296,9 +306,14 @@ export const projects: TPortfolioProject[] = [
       "Shows a complete real-estate browsing experience prospects can open",
       "Demonstrates search, listings, locations, and saved properties together",
     ],
-    gallery: [],
+    gallery: [
+      {
+        src: "/images/projects/nova-estate-home.jpg",
+        alt: "NOVA Estates homepage — Find a Place Worth Coming Home To, with The Glass House featured property",
+      },
+    ],
     liveDemo: {
-      url: "https://nova-estate-lilac.vercel.app",
+      url: "https://novaestatenova.vercel.app",
       label: "Live site",
     },
     repository: {
@@ -377,7 +392,12 @@ export const projects: TPortfolioProject[] = [
       "Gives a hospitality brand a bookable public presence",
       "Shows rooms, dining, spa, and experiences as one guest journey",
     ],
-    gallery: [],
+    gallery: [
+      {
+        src: "/images/projects/aurelia-house-home.jpg",
+        alt: "Aurelia House homepage — Stay Somewhere Worth Remembering, over the retreat landscape",
+      },
+    ],
     liveDemo: {
       url: "https://aureliahouse.vercel.app",
       label: "Live site",
@@ -459,9 +479,14 @@ export const projects: TPortfolioProject[] = [
       "Shows a complete fashion shopping path from collection to checkout",
       "Demonstrates product detail, bag, and search in one brand system",
     ],
-    gallery: [],
+    gallery: [
+      {
+        src: "/images/projects/empress-essentials-home.jpg",
+        alt: "Empress Essentials homepage — Style That Speaks Before You Do, with the autumn campaign portrait",
+      },
+    ],
     liveDemo: {
-      url: "https://empress-essentials.vercel.app",
+      url: "https://empressessentials.vercel.app",
       label: "Live store",
     },
     repository: {
@@ -545,8 +570,8 @@ export const projects: TPortfolioProject[] = [
     ],
     gallery: [
       {
-        src: "/images/projects/henry-landrews-jr-home.png",
-        alt: "Henry L. Andrews, Jr. executive portfolio home — board-ready hero, credentials, and portrait",
+        src: "/images/projects/henry-landrews-jr-live.jpg",
+        alt: "Henry L. Andrews, Jr. homepage — board-ready executive hero with portrait and credentials",
       },
     ],
     liveDemo: {
