@@ -601,6 +601,245 @@ export const projects: TPortfolioProject[] = [
       ],
     },
   },
+  {
+    id: "aaosrc",
+    slug: "aaosrc",
+    title: "AAOsrc",
+    subtitle: "Movie browsing app for trending titles, search, and a personal watchlist",
+    category: "Full Stack",
+    categories: ["Full Stack"],
+    industry: "Media",
+    clientType: "HOLASVISION product build",
+    summary:
+      "AAOsrc is a movie browsing app. The homepage opens on a featured title, then rows for trending, popular, top rated, upcoming, and genre picks, with search and a signed-in watchlist.",
+    problem:
+      "A movie catalog is hard to scan when search, title detail, and a personal list live in different places.",
+    goals: [
+      "Open on a featured title and scannable movie rows",
+      "Let people search titles and open a detail page",
+      "Save a watchlist for a signed-in account",
+    ],
+    solution:
+      "A TanStack Start application that loads a home feed, search, and movie pages, with Supabase auth and a watchlist. It is deployed at aaosrc.vercel.app.",
+    architecture:
+      "TanStack Start on Vite, with file routes for home, search, movie detail, login, and watchlist. The home loader fetches a TMDB feed. Supabase handles auth. Tailwind CSS and Radix-style UI primitives cover the interface. The app is deployed on Vercel.",
+    responsibilities: [
+      "Home feed, search, and movie detail routes",
+      "Sign-in and watchlist flow",
+      "Production deployment",
+    ],
+    features: [
+      "Featured hero with play, more info, and add-to-list actions",
+      "Rows for trending, popular, top rated, upcoming, and genre picks",
+      "Title search",
+      "Movie detail page",
+      "Sign-in and a personal list",
+    ],
+    technologyStack: [
+      "TanStack Start",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Supabase",
+      "TMDB",
+      "Vercel",
+    ],
+    engineeringChallenges: [
+      "Keeping the home feed, search, and watchlist on one consistent catalog",
+      "Loading poster art and title data without blocking the first screen",
+    ],
+    results: [],
+    businessImpact: [
+      "Gives a live media product people can browse, search, and save from",
+    ],
+    gallery: [
+      {
+        src: "/images/projects/aaosrc-home.jpg",
+        alt: "AAOsrc homepage — Resident Evil hero, search, and Trending This Week row",
+      },
+    ],
+    liveDemo: {
+      url: "https://aaosrc.vercel.app",
+      label: "Live product",
+    },
+    repository: {
+      url: "https://github.com/akinolaolayemi667/aaosrc",
+      visibility: "public",
+      label: "View on GitHub",
+    },
+    projectStatus: "in-production",
+    year: 2026,
+    featured: false,
+    isRepresentative: false,
+    outcomesAreEstimates: false,
+    testimonial: null,
+    seo: {
+      title: "AAOsrc Case Study — Movie Browsing App",
+      description:
+        "AAOsrc is a HOLASVISION movie browsing app with a home feed, search, and watchlist.",
+      keywords: ["AAOsrc", "movies", "TanStack", "Supabase", "HOLASVISION"],
+    },
+  },
+  {
+    id: "holas-vision",
+    slug: "holas-vision",
+    title: "HOLAS VISION",
+    subtitle: "Fashion storefront with catalog, cart, checkout, and account tools",
+    category: "E-commerce",
+    categories: ["E-commerce", "Full Stack"],
+    industry: "Fashion retail",
+    clientType: "HOLASVISION product build",
+    summary:
+      "HOLAS VISION is a clothing storefront. Shoppers browse a 2026 collection, filter by audience, open products, and use cart, wishlist, profile, and an optional wallet connection.",
+    problem:
+      "A fashion brand needs one storefront for browsing, product detail, cart, and account — not a brochure with a separate checkout.",
+    goals: [
+      "Present the collection with a clear path into the catalog",
+      "Support cart, wishlist, checkout, and order history",
+      "Give shoppers an account and store staff an admin surface",
+    ],
+    solution:
+      "A Next.js App Router store with Supabase auth, product and order flows, and an optional MetaMask wallet connection. It is deployed at holasvisionclothing.vercel.app.",
+    architecture:
+      "Next.js App Router with TypeScript and Tailwind CSS. Supabase covers email auth and profile data. Cart state persists in the browser. Route handlers cover orders, reviews, wishlist, contact, and admin actions for products, orders, and users. Web3 loads only when a wallet connection is requested.",
+    responsibilities: [
+      "Storefront, catalog, product detail, cart, and checkout",
+      "Auth, profile, wishlist, reviews, and order history",
+      "Admin routes and optional wallet connection",
+      "Production deployment",
+    ],
+    features: [
+      "Collection hero and shop-by-audience entry points",
+      "Product listing, galleries, and size guidance",
+      "Cart, wishlist, checkout, and order history",
+      "Email auth and profile management",
+      "Optional MetaMask wallet connection",
+      "Admin surfaces for products, orders, and users",
+    ],
+    technologyStack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "MetaMask",
+      "Vercel",
+    ],
+    engineeringChallenges: [
+      "Keeping catalog, cart, wishlist, and account flows on one storefront",
+      "Loading the wallet client only when a shopper connects",
+    ],
+    results: [],
+    businessImpact: [
+      "Shows a live fashion store with browse, cart, and account flows",
+    ],
+    gallery: [
+      {
+        src: "/images/projects/holas-vision-home.jpg",
+        alt: "HOLAS VISION homepage — Minimal fashion essentials hero, collection portraits, and shop by audience",
+      },
+    ],
+    liveDemo: {
+      url: "https://holasvisionclothing.vercel.app",
+      label: "Live store",
+    },
+    repository: {
+      url: "https://github.com/akinolaolayemi667/holasvision",
+      visibility: "public",
+      label: "View on GitHub",
+    },
+    projectStatus: "in-production",
+    year: 2026,
+    featured: false,
+    isRepresentative: false,
+    outcomesAreEstimates: false,
+    testimonial: null,
+    seo: {
+      title: "HOLAS VISION Case Study — Fashion Storefront",
+      description:
+        "HOLAS VISION is a clothing store by HOLASVISION with catalog, cart, checkout, accounts, and an optional wallet connection.",
+      keywords: [
+        "HOLAS VISION",
+        "fashion",
+        "e-commerce",
+        "Next.js",
+        "Supabase",
+      ],
+    },
+  },
+  {
+    id: "operation-blackout",
+    slug: "operation-blackout",
+    title: "Operation Blackout",
+    subtitle: "Tactical story experience with branching missions and an archive",
+    category: "Full Stack",
+    categories: ["Full Stack"],
+    industry: "Interactive story",
+    clientType: "HOLASVISION product build",
+    summary:
+      "Operation Blackout is a live tactical story. The opening screen starts a mission or opens an archive, and the public repository documents the larger squad-tactics design.",
+    problem:
+      "A branching story needs a clear start, a way back into earlier missions, and a design record the team can build from.",
+    goals: [
+      "Give the story a single entry point",
+      "Keep completed and hidden missions in an archive",
+      "Publish the tactics design beside the live experience",
+    ],
+    solution:
+      "A live story shell at operationblackout.vercel.app, with the public repository holding the vision, architecture, gameplay, AI, UI, audio, and save-system documents.",
+    architecture:
+      "The live page is a client-rendered story shell on Vercel. The repository describes a TypeScript simulation with PixiJS as the presentation layer and a custom entity-component system. The apps and packages folders in that repository are still placeholders.",
+    responsibilities: [
+      "Live mission entry and archive screen",
+      "Design documents for tactics, AI, UI, audio, and saves",
+    ],
+    features: [
+      "Begin Mission entry",
+      "Mission archive with victory, defeat, neutral, and hidden markers",
+      "Published vision, architecture, gameplay, AI, UI, audio, and save documents",
+    ],
+    technologyStack: ["TypeScript", "Vercel"],
+    engineeringChallenges: [
+      "Keeping the live story shell and the documented tactics design in one public repository",
+    ],
+    results: [],
+    businessImpact: [
+      "Puts the mission entry online while the tactics design stays in the repository",
+    ],
+    gallery: [
+      {
+        src: "/images/projects/operation-blackout-home.jpg",
+        alt: "Operation Blackout opening screen — Begin Mission and Mission Archive",
+      },
+    ],
+    liveDemo: {
+      url: "https://operationblackout.vercel.app",
+      label: "Live experience",
+    },
+    repository: {
+      url: "https://github.com/akinolaolayemi667/OperationBlackout",
+      visibility: "public",
+      label: "View on GitHub",
+    },
+    projectStatus: "ongoing",
+    year: 2026,
+    featured: false,
+    isRepresentative: false,
+    outcomesAreEstimates: false,
+    testimonial: null,
+    seo: {
+      title: "Operation Blackout Case Study — Tactical Story",
+      description:
+        "Operation Blackout is a HOLASVISION tactical story with a live mission entry and published design documents.",
+      keywords: [
+        "Operation Blackout",
+        "interactive story",
+        "TypeScript",
+        "HOLASVISION",
+      ],
+    },
+  },
 ];
 
 export function getAllPortfolioProjects(): TPortfolioProject[] {
